@@ -1,0 +1,43 @@
+{
+  "name": "animated-histogram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --open --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rockthecatzva/animated-histogram.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rockthecatzva/animated-histogram/issues"
+  },
+  "homepage": "https://github.com/rockthecatzva/animated-histogram#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "csvtojson": "^2.0.8",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "prop-types": "^15.7.2",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
+  },
+  "dependencies": {
+    "d3-ease": "^1.0.5",
+    "d3-selection": "^1.4.0",
+    "d3-transition": "^1.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
