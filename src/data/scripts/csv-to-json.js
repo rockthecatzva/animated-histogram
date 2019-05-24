@@ -7,7 +7,7 @@ csv()
   .then(jsonObj => {
     const formattedJson = jsonObj.map(d => ({
       ...d,
-      dollar_value: parseInt(d.dollar_value)
+      ticket_sales: parseInt(d.ticket_sales)
     }));
 
     console.log("Writing file");

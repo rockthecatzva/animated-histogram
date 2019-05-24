@@ -11,12 +11,10 @@ const STANDARD_RADIUS = 4.2, //use a getter/setter?
 exports.standardRadius = STANDARD_RADIUS;
 exports.columnWidth = COL_WIDTH;
 
-exports.tagGetter = (bubs, attribute, extractor) =>
-  bubs
-    .filter(b => b.getAttribute(attribute) !== "")
+exports.tagGetter = data =>
+  data
     .reduce((acc, curr) => {
-      const d = extractor(curr.getAttribute(attribute));
-      return acc.indexOf(d) < 0 ? [...acc, d] : acc;
+      return acc.indexOf(curr) < 0 ? [...acc, curr] : acc;
     }, [])
     .sort((a, b) => a - b);
 
@@ -47,14 +45,14 @@ exports.indexGetterRanges = ranges => val => {
 
 exports.rowColGetter_fixedColumnWidth = (
   tags,
-  extractor,
-  bubs,
+  attribute,
+  data,
   indexGetter
 ) => {
   let countsByAttribute = tags.map(t => 0);
 
-  return bubs.map(b => {
-    const attributeValue = extractor(b);
+  return data.map(b => {
+    const attributeValue = b[attribute];
     const index = indexGetter(attributeValue);
     let col = 0,
       row = 0,
@@ -66,34 +64,32 @@ exports.rowColGetter_fixedColumnWidth = (
       countsByAttribute[index] += 1;
     }
 
-
-
     return { row, col, groupOffset, index, attributeValue };
   });
 };
 
 exports.rowColGetter_dynamicColumnWidth = (
   tags,
-  extractor,
+  attribute,
   bubs,
   indexGetter
 ) => {
   let countsByAttribute = tags.map(t => 0);
 
   const numColsByPlat = tags.map(y =>
-    Math.trunc(Math.sqrt(bubs.filter(b => extractor(b) === y).length))
+    Math.trunc(Math.sqrt(bubs.filter(b => b[attribute] === y).length))
   );
 
   return bubs.map(b => {
-    const attributeValue = extractor(b);
+    const attributeValue = b[attribute];
     const index = indexGetter(attributeValue);
     let col = 0,
       row = 0,
-    groupOffset =
-      numColsByPlat.slice(0, index).reduce((acc, curr) => acc + curr, 0) *
-        STANDARD_RADIUS *
-        PADDING +
-      index * BY_PLATFORM_PADDING;
+      groupOffset =
+        numColsByPlat.slice(0, index).reduce((acc, curr) => acc + curr, 0) *
+          STANDARD_RADIUS *
+          PADDING +
+        index * BY_PLATFORM_PADDING;
 
     if (index >= 0) {
       col = Math.round(countsByAttribute[index] % numColsByPlat[index]);
@@ -111,7 +107,7 @@ exports.rowColGetter_dynamicColumnWidth = (
 exports.xYGetter = (bubs, centeringX, height) =>
   bubs.map(b => {
     const cx = b.col * (STANDARD_RADIUS * PADDING) + b.groupOffset + centeringX,
-    cy =
+      cy =
         height -
         b.row * (STANDARD_RADIUS * PADDING) -
         STANDARD_RADIUS -
@@ -160,14 +156,14 @@ exports.labelMakerValues = (
             .map(b => b.col)
             .reduce((acc, curr) => (curr > acc ? curr : acc)),
       histoColCenter = (numCols / 2) * STANDARD_RADIUS * PADDING,
-      maxH = rowCols.filter(r => r.index === i).reduce((acc, curr) => {
-        if (curr.row > acc) {
-          return curr.row;
-        }
-        return acc;
-      }, 0);
-
-    
+      maxH = rowCols
+        .filter(r => r.index === i)
+        .reduce((acc, curr) => {
+          if (curr.row > acc) {
+            return curr.row;
+          }
+          return acc;
+        }, 0);
 
     return {
       text: t,
@@ -195,16 +191,21 @@ exports.labelXPositions = (
     return groupOffset + centeringX + histoColCenter;
   });
 
-exports.valueLabelYPositions = (tags, rowCols, height, gapSpace = 40) => //IS HEIGHT EVEN NECESSARY??
+exports.valueLabelYPositions = (
+  tags,
+  rowCols,
+  height,
+  gapSpace = 40 //IS HEIGHT EVEN NECESSARY??
+) =>
   tags.map((t, i) => {
-    const maxH = rowCols.filter(r => r.index === i).reduce((acc, curr) => {
-      if (curr.row > acc) {
-        return curr.row;
-      }
-      return acc;
-    }, 0);
-
-    
+    const maxH = rowCols
+      .filter(r => r.index === i)
+      .reduce((acc, curr) => {
+        if (curr.row > acc) {
+          return curr.row;
+        }
+        return acc;
+      }, 0);
 
     return height - maxH * STANDARD_RADIUS * PADDING - gapSpace;
   });
