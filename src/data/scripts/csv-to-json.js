@@ -1,20 +1,15 @@
 const csvFilePath = "src/data/scripts/data.csv";
 const csv = require("csvtojson");
-
-console.log("Here")
+const fs = require("fs");
 
 csv()
   .fromFile(csvFilePath)
   .then(jsonObj => {
-    console.log(jsonObj);
-    /**
-     * [
-     * 	{a:"1", b:"2", c:"3"},
-     * 	{a:"4", b:"5". c:"6"}
-     * ]
-     */
+    const formattedJson = jsonObj.map(d => ({
+      ...d,
+      ticket_sales: parseInt(d.ticket_sales)
+    }));
+
+    console.log("Writing file");
+    fs.writeFileSync("data.json", JSON.stringify(formattedJson));
   });
-
-// Async / await usage
-// const jsonArray = await csv().fromFile(csvFilePath);
-
