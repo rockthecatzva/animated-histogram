@@ -62,7 +62,7 @@ exports.rowColGetter_fixedColumnWidth = (
       countsByAttribute[index] += 1;
     }
 
-    return { row, col, groupOffset, index, attributeValue };
+    return {...b, row, col, groupOffset, index, attributeValue };
   });
 };
 
@@ -98,20 +98,20 @@ exports.rowColGetter_dynamicColumnWidth = (
       countsByAttribute[index] += 1;
     }
 
-    return { row, col, groupOffset, index, attributeValue };
+    return {...b, row, col, groupOffset, index, attributeValue };
   });
 };
 
 exports.xYGetter = (bubs, centeringX, height) =>
   bubs.map(b => {
-    const cx = b.col * (STANDARD_RADIUS * PADDING) + b.groupOffset + centeringX,
-      cy =
+    const targetX = b.col * (STANDARD_RADIUS * PADDING) + b.groupOffset + centeringX,
+      targetY =
         height -
         b.row * (STANDARD_RADIUS * PADDING) -
         STANDARD_RADIUS -
         SVG_BOTTOM_PADDING;
 
-    return { ...b, cx, cy };
+    return { ...b, targetX, targetY };
   });
 
 exports.labelMaker = (

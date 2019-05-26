@@ -23,5 +23,5 @@ export default function MenuButtonsAnimated(props) {
 
 MenuButtonsAnimated.propTypes = {
   onButtonClick: PropTypes.func.isRequired,
-  selectedButton: PropTypes.number.isRequired
+  selectedButton: PropTypes.number
 };

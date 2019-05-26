@@ -12,52 +12,19 @@ const dataFile = require("../src/data.json");
 
 export default class App extends Component {
   drawHistogram = data => {
-    const bubs = [...document.querySelectorAll(".bubble")];
-
-    bubs.forEach((b, i) => {
-      if (data[i].targetX) {
-        select(b)
-          .attr("cx", () => data[i].targetX)
-          .attr("cy", () => data[i].cy)
-          .transition()
-          .attr("cx", () => data[i].targetX)
-          .attr("cy", () => data[i].targetY)
-          .duration(i * 5);
-      } else {
-        select(b)
-          .transition()
-          .attr("cx", () => data[i].cx)
-          .attr("cy", () => data[i].cy)
-          .duration(2000);
-      }
-    });
+    this.g
+      .selectAll(".bubble")
+      .data(data)
+      .transition()
+      .attr("cx", d => d.targetX)
+      .attr("cy", d => d.targetY)
+      .duration((d, i) => i * 5);
   };
 
   animationHopper = (data, count = 0) => {
-    setTimeout(() => {
+    this.timeoutID = window.setTimeout(() => {
       if (!this.state.runAnimation) return;
-      const updateElems = data[0].animator();
-
-      if (updateElems) {
-        let bubs = updateElems.bubbles;
-
-        if (count === 1) {
-          //override bubs here
-          bubs = bubs.map(b => {
-            return {
-              ...b,
-              targetX: b.cx,
-              targetY: b.cy,
-              cx: b.cx,
-              cy: -b.cy
-            };
-          });
-        }
-
-        this.drawHistogram(bubs);
-        this.drawAxisLabels(updateElems.xAxisLabels);
-        this.drawValueLabels(updateElems.valueLabels);
-      }
+      data[0].animator();
 
       if (data.length > 1) {
         this.animationHopper(data.slice(1), ++count);
@@ -87,6 +54,7 @@ export default class App extends Component {
       .text(d => d.text)
       .attr("x", (d, i) => d.x)
       .attr("y", this.height + 10)
+      .attr("fill", "#a0a0a0")
       .transition()
       .attr("y", d => d.y)
       .attr("opacity", 1)
@@ -161,14 +129,7 @@ export default class App extends Component {
       .on("mouseleave", () => this.updateSideBar());
   };
 
-  // updateToggleButtons = target => {
-  //   document.querySelectorAll(".button-animationtoggle").forEach(e => {
-  //     e.classList.remove("highlight");
-  //   });
-  //   document.querySelector(target).classList.add("highlight");
-  // };
-
-  histoByYear = data => {
+  histoByYear = (data, buttonId) => {
     // updateToggleButtons("#year");
 
     //2. get unduplicated list of tags
@@ -218,10 +179,14 @@ export default class App extends Component {
       y: valueY[i]
     }));
 
-    return { bubbles: xys, xAxisLabels, valueLabels };
+    this.setState({ selectedHistoButton: buttonId }, () => {
+      this.drawHistogram(xys);
+      this.drawAxisLabels(xAxisLabels);
+      this.drawValueLabels(valueLabels);
+    });
   };
 
-  histoByTicketSales = data => {
+  histoByTicketSales = (data, buttonId) => {
     // updateToggleButtons("#award");
 
     const sales_groupings = [
@@ -284,10 +249,14 @@ export default class App extends Component {
       y: valueY[i]
     }));
 
-    return { bubbles: xys, xAxisLabels, valueLabels };
+    this.setState({ selectedHistoButton: buttonId }, () => {
+      this.drawHistogram(xys);
+      this.drawAxisLabels(xAxisLabels);
+      this.drawValueLabels(valueLabels);
+    });
   };
 
-  histoByPlatform = (data, histoAttribute) => {
+  histoByPlatform = (data, buttonId, histoAttribute) => {
     // updateToggleButtons("#" + histoAttribute);
 
     // const bubs = [...document.querySelectorAll(".bubble")];
@@ -329,44 +298,53 @@ export default class App extends Component {
       y: valueY[i]
     }));
 
-    return { bubbles: xys, xAxisLabels, valueLabels };
+    this.setState({ selectedHistoButton: buttonId }, () => {
+      this.drawHistogram(xys);
+      this.drawAxisLabels(xAxisLabels);
+      this.drawValueLabels(valueLabels);
+    });
   };
 
   state = {
     runAnimation: true,
     hasStarted: false,
     sideBarData: undefined,
-    selectedHistoButton: 0
+    selectedHistoButton: undefined
   };
 
   componentDidMount() {
-    const data = dataFile
+    this.width = this.svgContainer.clientWidth;
+    this.height = this.svgContainer.clientHeight;
+
+    this.data = dataFile
       .map(d => ({
         ...d,
         date: new Date(d.date),
-        year: new Date(d.date).getFullYear()
+        year: new Date(d.date).getFullYear(),
+        cx: 0, //init x and y positions
+        cy: -this.height,
+        targetX: 0,
+        targetY: -this.height
       }))
       .sort((a, b) => (a.dollar_value < b.dollar_value ? -1 : 1))
       .sort((a, b) => (a.type < b.type ? -1 : 1));
 
+    const { data } = this;
+
     const anims = [
-      { delay: 0, dur: 0, animator: () => this.initBubbles(data) },
-      { delay: 0, dur: 0, animator: () => this.histoByYear(data) },
-      { delay: 2500, dur: 0, animator: () => this.histoByTicketSales(data) },
+      { delay: 0, dur: 0, animator: () => this.histoByYear(data, 1) },
+      { delay: 2500, dur: 0, animator: () => this.histoByTicketSales(data, 3) },
       {
         delay: 2500,
         dur: 0,
-        animator: () => this.histoByPlatform(data, "type")
+        animator: () => this.histoByPlatform(data, 0, "type")
       },
       {
         delay: 2500,
         dur: 0,
-        animator: () => this.histoByPlatform(data, "group")
+        animator: () => this.histoByPlatform(data, 2, "group")
       }
     ];
-
-    this.width = this.svgContainer.clientWidth;
-    this.height = this.svgContainer.clientHeight;
 
     this.svg = select(".svg-container")
       .append("svg")
@@ -375,16 +353,36 @@ export default class App extends Component {
 
     this.g = this.svg.append("g");
 
+    this.initBubbles(data);
     this.animationHopper(anims);
   }
 
-  onHistoButtonClick = i=>{
-    this.setState({selectedHistoButton: i})
-  }
+  onHistoButtonClick = i => {
+    // this.setState({ selectedHistoButton: i });
+    window.clearTimeout(this.timeoutID);
+    switch (i) {
+      case 0:
+        //type
+        this.histoByPlatform(this.data, 0, "type");
+        break;
+      case 1:
+        //year
+        this.histoByYear(this.data, 1);
+        break;
+      case 2:
+        //dist
+        this.histoByPlatform(this.data, 2, "group");
+        break;
+      case 3:
+        //ticket sales
+        this.histoByTicketSales(this.data, 3);
+        break;
+    }
+  };
 
   render() {
     const { selectedHistoButton } = this.state;
-console.log(selectedHistoButton)
+
     return (
       <div>
         <MenuButtonsAnimated
