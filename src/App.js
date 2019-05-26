@@ -9,6 +9,7 @@ import { transition } from "d3-transition";
 const histoUtils = require("./components/HistogramUtilities");
 
 const dataFile = require("../src/data.json");
+import "./style.scss";
 
 export default class App extends Component {
   drawHistogram = data => {
@@ -115,6 +116,8 @@ export default class App extends Component {
   };
 
   initBubbles = data => {
+    const { updateSideBar } = this;
+
     this.g
       .selectAll("circle")
       .data(data)
@@ -125,8 +128,15 @@ export default class App extends Component {
       .attr("cy", -100)
       .attr("fill", "#71C8AF")
       .attr("r", histoUtils.standardRadius)
-      .on("mouseenter", d => this.updateSideBar(d))
-      .on("mouseleave", () => this.updateSideBar());
+      .on("mouseenter", function(d) {
+        select(this).attr("r", histoUtils.standardRadius + 3);
+
+        updateSideBar(d);
+      })
+      .on("mouseleave", function(d) {
+        select(this).attr("r", histoUtils.standardRadius);
+        // updateSideBar();
+      });
   };
 
   histoByYear = (data, buttonId) => {
@@ -384,13 +394,17 @@ export default class App extends Component {
     const { selectedHistoButton } = this.state;
 
     return (
-      <div>
+      <div className="centering-container">
+        <div className="header-container">
+          Image here
+          <div className="header-text">MOVIE BOX OFFICE PERFORMANCE</div>
+        </div>
         <MenuButtonsAnimated
           selectedButton={selectedHistoButton}
           onButtonClick={i => this.onHistoButtonClick(i)}
         >
-          <div>Type</div>
-          <div>Year</div>
+          <div>Genre</div>
+          <div>Release Year</div>
           <div>Distribution</div>
           <div>Ticket Sales</div>
         </MenuButtonsAnimated>

@@ -8,7 +8,8 @@
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
-    "make-json": "node src/data/scripts/csv-to-json.js"
+    "make-json": "node src/data/scripts/csv-to-json.js",
+    "word-gen": "node src/data/scripts/rando-name-gen.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,8 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "csv-parse": "^4.4.1",
+    "csv-parser": "^2.3.0",
     "csvtojson": "^2.0.8",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
@@ -36,10 +39,14 @@
     "webpack-dev-server": "^3.4.1"
   },
   "dependencies": {
+    "css-loader": "^2.1.1",
     "d3-ease": "^1.0.5",
     "d3-selection": "^1.4.0",
     "d3-transition": "^1.2.0",
+    "node-sass": "^4.12.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1"
   }
 }

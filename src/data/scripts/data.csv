@@ -1,1 +1,441 @@
-date,name,ticket_sales,type,group4/4/11,A,70091,Action,Global4/22/11,B,5900026,Action,Global4/25/11,C,2950095,Action,Global4/28/11,A,2900068,Action,Global5/18/11,B,10029,Action,Global9/1/11,C,401402,Action,Global9/26/11,A,494077,Action,Global10/14/11,B,440081,Comedy,Global11/21/11,C,500009,Action,Domestic1/13/12,B,80080,Comedy,Domestic1/13/12,A,100045,Comedy,Domestic3/8/12,C,525820,Horror,Domestic3/8/12,A,1750019,Action,Independent3/16/12,B,25050,Comedy,Domestic4/2/12,C,539757,Horror,Global4/20/12,A,2000076,Action,Independent5/11/12,B,100062,Comedy,Domestic5/14/12,C,10091,Comedy,Independent5/20/12,A,3026491,Action,Global6/21/12,C,640093,Action,Global6/21/12,B,1000087,Action,Global6/26/12,A,100043,Action,Independent6/29/12,B,10078,Comedy,Domestic7/9/12,C,25015,Comedy,Global7/12/12,A,78538,Comedy,Domestic7/23/12,B,58018,Comedy,Global7/30/12,C,850044,Horror,Domestic8/14/12,A,500025,Comedy,Domestic8/27/12,B,65094,Comedy,Global9/6/12,C,25003,Comedy,Global9/18/12,A,5079,Comedy,Domestic9/19/12,B,207575,Comedy,Domestic10/1/12,C,25046,Comedy,Domestic10/2/12,A,6967298,Action,Domestic10/3/12,B,2028,Comedy,International10/12/12,C,15034,Comedy,Domestic10/16/12,A,200033,Action,Global10/18/12,B,80030,Comedy,Independent10/18/12,C,228116,Action,Independent10/24/12,A,1900061,Action,Domestic11/30/12,B,2500018,Action,Global1/24/13,C,75055,Comedy,Independent2/8/13,A,120032,Action,Global2/15/13,B,500078,Action,Global3/1/13,C,26320,Comedy,Global3/27/13,A,5009,Comedy,Domestic4/2/13,B,650064,Action,Domestic4/15/13,C,250064,Comedy,Domestic4/23/13,A,1500062,Action,Independent4/30/13,B,99952,Horror,Domestic5/9/13,A,25054,Comedy,Global5/9/13,C,344677,Horror,Global5/17/13,B,123912,Action,Independent5/22/13,C,4022,Comedy,Global5/24/13,A,937082,Action,Global6/3/13,B,2098956,Action,Global6/6/13,C,487395,Action,Global6/10/13,A,500034,Horror,Domestic6/27/13,B,10042,Comedy,Domestic7/17/13,C,189023,Horror,Domestic7/29/13,A,100083,Comedy,Domestic8/8/13,B,100010,Horror,International8/26/13,C,100045,Comedy,Domestic8/29/13,B,1050,Comedy,Domestic8/29/13,A,830032,Horror,Domestic9/3/13,C,6600027,Horror,Domestic9/9/13,A,1477023,Horror,Independent9/19/13,B,300090,Comedy,Independent9/20/13,C,400013,Comedy,Independent9/24/13,A,5035,Comedy,International9/25/13,B,9902470,Action,Domestic10/2/13,C,15004,Comedy,Domestic10/29/13,A,2075,Comedy,Independent10/30/13,B,500034,Comedy,Domestic11/4/13,C,40057,Comedy,Domestic11/12/13,A,10050,Comedy,Domestic11/29/13,B,452010,Horror,International12/2/13,C,2250062,Action,Domestic12/5/13,A,25081,Comedy,Domestic12/10/13,C,385477,Horror,Domestic12/10/13,A,397949,Horror,Domestic12/10/13,B,400174,Horror,Domestic12/11/13,B,476416,Horror,Domestic12/11/13,C,499636,Horror,Domestic1/17/14,A,40076,Comedy,Domestic1/17/14,B,371070,Action,Global1/23/14,C,160072,Action,Global2/7/14,A,72,Comedy,Domestic2/14/14,B,500002,Action,Global2/21/14,C,50037,Comedy,Domestic2/25/14,A,434236,Action,Global2/26/14,B,50053,Comedy,Domestic2/27/14,C,215689,Comedy,Domestic3/4/14,A,601395,Comedy,Domestic3/14/14,B,6079,Comedy,Domestic4/4/14,C,250052,Action,Domestic4/8/14,A,200063,Horror,International4/14/14,B,25054,Comedy,Domestic4/16/14,C,562946,Action,Independent4/16/14,A,562953,Action,Independent5/1/14,B,10020,Comedy,Domestic5/9/14,A,2604134,Action,Global5/9/14,C,2650059,Action,Global6/3/14,B,502001,Comedy,Domestic6/5/14,C,8900046,Action,Domestic6/11/14,A,496222,Action,Domestic6/24/14,B,350022,Comedy,International6/25/14,C,4867460,Action,International6/26/14,A,10062,Comedy,Domestic6/27/14,B,3500005,Action,Global6/27/14,C,4200046,Action,Global7/10/14,B,989,Comedy,Independent7/10/14,A,20052,Comedy,Domestic7/14/14,C,492184,Action,Global7/18/14,A,1400039,Horror,Domestic7/28/14,B,499342,Comedy,Domestic8/1/14,C,20000097,Action,Global8/12/14,A,611553,Action,Global9/10/14,C,3500077,Horror,Domestic9/10/14,B,8000078,Horror,Domestic9/12/14,B,900024,Horror,Domestic9/12/14,A,1200067,Horror,Domestic9/12/14,A,1300073,Horror,Domestic9/12/14,C,1800030,Horror,Domestic9/29/14,B,596097,Horror,Domestic9/30/14,C,30024,Comedy,Domestic10/1/14,A,1025086,Action,Domestic10/3/14,B,1028765,Action,Domestic10/7/14,C,7507,Comedy,Domestic10/7/14,A,391740,Action,Domestic10/7/14,B,500062,Action,Domestic10/8/14,C,25011,Comedy,Domestic10/17/14,A,172059,Comedy,Domestic10/24/14,C,6055,Comedy,Domestic10/24/14,B,10060,Comedy,International11/12/14,A,1700099,Action,Domestic12/2/14,B,52474,Comedy,Domestic12/4/14,C,100054,Comedy,Domestic12/5/14,A,83259,Horror,Global12/5/14,B,227118,Comedy,Domestic12/8/14,C,351420,Action,Domestic12/15/14,A,140032,Action,Global12/29/14,B,1440963,Action,Global1/2/15,C,200040,Comedy,Domestic1/6/15,A,100029,Horror,Domestic1/9/15,B,100027,Action,Domestic1/16/15,A,263380,Action,Global1/16/15,C,1100024,Action,Global1/18/15,B,236771,Action,Global1/21/15,C,300030,Action,Global1/23/15,A,399638,Action,Global1/27/15,B,10023,Comedy,Independent1/28/15,A,1100077,Action,Global1/28/15,C,1461713,Action,Global1/29/15,B,2507634,Action,Global1/30/15,C,1100028,Action,Global2/2/15,C,1047183,Action,Global2/2/15,A,1100020,Action,Global2/2/15,B,1434132,Action,Global2/13/15,A,10096,Comedy,International2/13/15,B,2100072,Action,Domestic2/23/15,C,738040,Action,Global2/23/15,A,3250028,Action,Global3/2/15,B,120085,Horror,Global3/4/15,C,120302,Comedy,Domestic3/4/15,A,2524221,Action,Domestic3/18/15,B,499213,Action,Global3/24/15,C,2800061,Comedy,Domestic3/27/15,A,2560030,Action,Global4/1/15,B,82,Comedy,Domestic4/2/15,C,950099,Action,Global4/4/15,A,1000004,Action,Domestic4/7/15,B,1998810,Action,Global4/9/15,C,397638,Action,Independent4/10/15,B,7202,Comedy,Domestic4/10/15,A,16073,Comedy,Domestic4/24/15,C,274442,Horror,Domestic5/8/15,A,2625017,Action,Global5/13/15,B,2625023,Action,Global5/14/15,C,2441559,Action,Global5/15/15,A,648313,Action,Global5/18/15,B,2700053,Action,Global5/21/15,A,400064,Action,Domestic5/21/15,C,1000047,Action,Domestic5/21/15,B,1000035,Action,Domestic5/21/15,C,1000058,Action,Domestic5/21/15,A,1000036,Action,Domestic5/22/15,B,154093,Action,Global5/29/15,C,566,Action,Independent6/3/15,B,420027,Action,Global6/3/15,A,2144616,Action,Global6/5/15,C,249031,Comedy,Domestic6/8/15,B,136299,Action,Domestic6/8/15,A,2175324,Action,Global6/9/15,C,63,Comedy,Domestic6/18/15,A,130070,Comedy,International6/18/15,B,300048,Action,Global6/19/15,C,1997438,Action,Global6/26/15,A,50091,Comedy,Domestic6/26/15,B,405154,Action,Global6/30/15,C,118,Comedy,Domestic7/2/15,A,500022,Action,Global7/20/15,B,373025,Action,Domestic7/30/15,C,1444728,Action,Global8/6/15,A,323928,Action,Global8/13/15,B,1180089,Comedy,International8/14/15,C,15094,Comedy,Domestic8/14/15,A,340198,Action,Global8/18/15,B,447843,Action,Global8/19/15,C,1246580,Comedy,Domestic8/20/15,A,100021,Action,Global8/28/15,B,298857,Action,Global9/4/15,A,5056,Comedy,Domestic9/4/15,C,30051,Comedy,Domestic9/8/15,B,7000004,Action,Domestic9/9/15,C,5094,Comedy,International9/9/15,A,954063,Action,Domestic9/14/15,B,150045,Action,Domestic9/15/15,C,1676049,Romantic,Global9/17/15,A,100023,Comedy,Domestic9/25/15,B,15025,Comedy,Domestic9/30/15,C,443194,Horror,Domestic10/14/15,A,379255,Action,Domestic10/14/15,C,650098,Action,Domestic10/14/15,B,758001,Action,Domestic10/15/15,A,200027,Comedy,Domestic10/20/15,B,15055,Comedy,Domestic11/2/15,C,639562,Action,Global11/13/15,A,383854,Action,Global11/16/15,B,10042,Comedy,Domestic11/16/15,C,3680055,Action,Domestic11/20/15,A,221,Comedy,Domestic11/23/15,B,245053,Comedy,Domestic11/24/15,C,36,Comedy,Domestic12/1/15,A,7070,Comedy,International12/2/15,B,255199,Action,Global12/18/15,C,10029,Comedy,Domestic12/18/15,A,1354749,Action,Global12/21/15,B,504959,Action,Global12/30/15,C,19658,Comedy,Global1/4/16,B,10081,Comedy,International1/4/16,A,532151,Horror,International1/5/16,C,452428,Action,Global1/7/16,A,60,Horror,Domestic1/9/16,B,298831,Action,Global1/11/16,C,54844,Horror,Global1/11/16,A,234085,Action,Global1/11/16,B,463890,Action,Domestic1/15/16,C,50073,Comedy,Global1/18/16,A,100,Action,Domestic1/21/16,B,25083,Comedy,Global1/22/16,C,300095,Action,Global1/26/16,A,397663,Horror,International1/27/16,B,700011,Action,Domestic1/29/16,A,1932027,Action,Global1/29/16,C,2800097,Action,Global2/1/16,C,149813,Action,International2/1/16,B,700057,Action,Domestic2/2/16,B,700066,Action,Domestic2/2/16,A,2079606,Action,Global2/3/16,C,1200019,Action,Global2/3/16,A,2943601,Action,Global2/5/16,B,43083,Comedy,Domestic2/9/16,C,349538,Horror,International2/12/16,A,110007,Comedy,International2/12/16,B,321219,Action,Global2/16/16,C,350045,Action,Global3/4/16,A,188082,Action,Global3/10/16,B,50061,Comedy,Global3/11/16,C,500004,Action,Global3/14/16,A,100077,Comedy,Global3/16/16,B,599690,Comedy,Global3/17/16,C,50082,Comedy,Global3/17/16,A,1660420,Action,Global3/25/16,B,100076,Action,Domestic3/30/16,C,1180010,Action,Global4/1/16,A,332912,Action,Global4/8/16,B,520011,Action,Global4/11/16,C,6757,Comedy,Domestic4/12/16,A,12399,Comedy,International4/19/16,B,2750889,Action,Global4/20/16,C,1299675,Horror,Domestic4/22/16,B,166192,Action,Global4/22/16,A,1402203,Action,Global4/27/16,C,10029,Comedy,International5/4/16,A,100094,Action,Global5/6/16,B,78048,Comedy,Global5/9/16,C,183556,Action,Global5/10/16,A,9412,Action,Global5/13/16,B,366257,Action,Global5/13/16,C,649664,Action,Global5/16/16,A,650047,Action,Global5/17/16,B,4500063,Action,Domestic5/20/16,C,4559275,Action,Global5/24/16,A,29051,Action,Global5/26/16,B,3184,Comedy,Global5/26/16,C,1200047,Action,Global5/31/16,B,1191289,Action,Global5/31/16,A,4296556,Action,Global6/7/16,C,100074,Action,Global6/8/16,B,379908,Action,Global6/8/16,A,915015,Action,Global6/9/16,C,40029,Horror,Domestic6/22/16,A,300000,Action,Global6/30/16,B,1319764,Action,Global7/8/16,C,3250019,Horror,International7/15/16,B,500030,Action,Global7/15/16,A,600039,Action,Global7/19/16,C,90037,Action,Domestic7/19/16,A,516105,Action,Global7/26/16,B,5100,Comedy,International7/27/16,C,376367,Romantic,Global7/29/16,A,25040,Comedy,Global8/1/16,B,208128,Action,Global8/3/16,C,247272,Action,Global8/5/16,A,149562,Comedy,Global8/19/16,B,198244,Action,Global8/19/16,C,1330092,Romantic,Domestic8/20/16,A,1000077,Comedy,Global8/23/16,B,247793,Action,Domestic8/25/16,C,1172722,Romantic,Global8/31/16,A,30029,Comedy,Independent9/2/16,B,746971,Action,Global9/6/16,C,147893,Action,Independent9/8/16,A,25007,Comedy,Global9/9/16,C,420011,Action,Global9/9/16,B,29993126,Action,Global9/13/16,A,300030,Action,Global9/13/16,B,13602183,Action,Domestic9/19/16,C,997247,Action,Global9/20/16,A,236876,Romantic,Global9/26/16,B,24008,Comedy,Domestic9/29/16,C,299997,Action,Global9/30/16,A,299940,Action,Global10/3/16,B,302641,Romantic,Global10/5/16,C,79389,Action,Global10/6/16,A,365515,Action,Global10/7/16,B,1000017,Comedy,Global10/11/16,C,380080,Action,Global10/13/16,A,1000100,Comedy,Global10/19/16,C,240055,Romantic,Global10/19/16,B,6000055,Comedy,Global10/25/16,A,147060,Comedy,Global10/28/16,B,100065,Comedy,Domestic11/4/16,C,960085,Romantic,International11/8/16,A,1941989,Action,Global11/10/16,B,250065,Action,Global11/14/16,C,2106301,Action,Global11/17/16,A,6436,Comedy,Domestic11/17/16,B,2090477,Action,Global11/18/16,C,1440065,Comedy,Global11/18/16,A,2408212,Action,Global11/18/16,B,3117503,Romantic,Global11/22/16,A,1319759,Romantic,Global11/22/16,C,1900449,Action,Global11/28/16,B,900044,Romantic,Domestic12/5/16,A,225036,Action,Independent12/5/16,C,250046,Comedy,Domestic12/5/16,B,2600056,Romantic,Global12/9/16,C,262787,Action,Global12/16/16,A,134609,Action,Global12/22/16,B,196338,Romantic,Global12/23/16,C,103904,Action,Global12/30/16,A,15000037,Romantic,Global1/3/17,B,1161393,Action,Global1/9/17,C,183923,Horror,International1/10/17,A,1105353,Action,Global1/11/17,B,870975,Romantic,Global1/23/17,C,384547,Romantic,Global1/27/17,A,600053,Comedy,Domestic2/3/17,C,336945,Romantic,Global2/3/17,B,2100061,Action,Global2/9/17,A,300039,Action,Global2/10/17,B,146627,Action,Global2/24/17,C,384356,Romantic,Global3/2/17,A,200058,Romantic,Domestic3/6/17,B,286181,Action,Global3/8/17,C,1385736,Action,Global3/10/17,A,2371786,Action,Global3/14/17,B,1319785,Action,Global3/14/17,C,1332559,Romantic,Global3/29/17,A,650086,Action,Global3/31/17,B,1219407,Action,Global4/6/17,C,1133030,Action,Global4/7/17,A,59522,Action,Global4/12/17,A,1206010,Romantic,Global4/12/17,B,2805568,Horror,International4/12/17,C,3907230,Action,International4/17/17,B,2114661,Action,Global5/3/17,C,619873,Action,Global5/5/17,B,500003,Romantic,Global5/5/17,A,4630258,Action,Global5/17/17,C,156034,Comedy,Global5/23/17,A,395856,Action,Global5/24/17,B,185,Comedy,Domestic6/5/17,C,115,Comedy,Domestic6/5/17,A,67855,Action,Global6/6/17,B,570919,Action,Global6/15/17,C,600039,Comedy,Domestic6/19/17,A,75006,Comedy,Global6/22/17,B,200038,Action,Global6/27/17,C,10040,Comedy,Domestic7/5/17,A,200063,Comedy,Domestic7/7/17,B,506574,Romantic,Global7/10/17,C,3500061,Romantic,Global7/13/17,A,5029,Comedy,Domestic7/13/17,B,669386,Action,Global7/27/17,C,844490,Action,Global7/28/17,A,175760,Romantic,Domestic8/3/17,B,183,Comedy,Domestic8/10/17,C,207958,Action,Global8/14/17,A,389489,Action,Domestic8/15/17,B,830934,Romantic,Global8/30/17,C,299932,Romantic,Global9/5/17,A,345081,Action,Global9/13/17,B,1000079,Romantic,Global9/25/17,C,20054,Comedy,Domestic10/9/17,A,250016,Action,Domestic10/11/17,B,35088,Romantic,Global12/13/17,C,75058,Romantic,Global12/15/17,A,251443,Action,Global12/26/17,B,2872314,Action,Global12/29/17,C,28090,Horror,International1/3/18,A,621639,Action,Global1/8/18,B,500032,Action,Global1/12/18,C,75035,Romantic,Global1/16/18,A,5051,Romantic,Global1/26/18,B,4268,Romantic,Global2/6/18,C,1897495,Action,Global2/13/18,A,1025,Romantic,Global2/21/18,B,499861,Action,Global2/23/18,C,699929,Action,Global3/5/18,A,999566,Romantic,Global3/16/18,B,299986,Action,Global4/5/18,C,1800072,Action,International4/11/18,A,1800095,Action,International4/17/18,B,50063,Comedy,Domestic4/20/18,C,149531,Romantic,Global5/23/18,A,100040,Comedy,Global6/13/18,B,750097,Romantic,Global
+date,name,ticket_sales,type,group
+4/4/11,Ear Busy Mute Rapid Pump,70091,Action,Global
+4/22/11,Death Trick Compete Brush Good Resolute,5900026,Action,Global
+4/25/11,Play Stop Hum Handy,2950095,Action,Global
+4/28/11,Tent Eminent Stove,2900068,Action,Global
+5/18/11,Statement Level Tent Inconclusive Hammer Substantial,10029,Action,Global
+9/1/11,Rich Abrasive Fearless Absorbed,401402,Action,Global
+9/26/11,Rich Nondescript Question Ear Fallacious,494077,Action,Global
+10/14/11,Whole Shape Creature Contain Rotten,440081,Comedy,Global
+11/21/11,Dolls Woman Load Paste,500009,Action,Domestic
+1/13/12,Pump Kiss Crowded,80080,Comedy,Domestic
+1/13/12,Rinse Pot Skillful Force Force,100045,Comedy,Domestic
+3/8/12,Alert Rich Pin Sprout Battle Board Harmonious,525820,Horror,Domestic
+3/8/12,Kick End Heady Clear,1750019,Action,Indie
+3/16/12,Voracious Harmonious Mere Belief Abashed Board,25050,Comedy,Domestic
+4/2/12,Book Painstaking Plastic Pin Lock Absorbed,539757,Horror,Global
+4/20/12,Gun Busy Tent Stove Kitty Force,2000076,Action,Indie
+5/11/12,Victorious Obsequious Tin Moan Abortive Superficial,100062,Comedy,Domestic
+5/14/12,Heady Educated Abrasive Aftermath,10091,Comedy,Indie
+5/20/12,Ear Duck Scrub Electric Tank Pump Electric,3026491,Action,Global
+6/21/12,Door Error Wine End Pest Superficial Alert,640093,Action,Global
+6/21/12,Shape Rake Jobless Hate,1000087,Action,Global
+6/26/12,Clear Mist Compete Mark Plant Whole Jump,100043,Action,Indie
+6/29/12,Paste Glass Dysfunctional Paste Notebook,10078,Comedy,Domestic
+7/9/12,Kick Judicious Changeable Drain Striped,25015,Comedy,Global
+7/12/12,Wine Spare Rotten Milk Skillful Rich,78538,Comedy,Domestic
+7/23/12,Decorous Dysfunctional Guess Eminent,58018,Comedy,Global
+7/30/12,Deserve Wholesale Steadfast Pin,850044,Horror,Domestic
+8/14/12,Need Compete Grandmother Mute,500025,Comedy,Domestic
+8/27/12,Boiling Spicy Shape,65094,Comedy,Global
+9/6/12,Governor Heady Question Creature,25003,Comedy,Global
+9/18/12,Crowded End Mist Guess Drain,5079,Comedy,Domestic
+9/19/12,Scrub Witty Cultured Thoughtful Crate Eminent,207575,Comedy,Domestic
+10/1/12,Vessel Death Death Rake,25046,Comedy,Domestic
+10/2/12,Battle Crate Prepare Melt,6967298,Action,Domestic
+10/3/12,Pray Paste Hot Rain Whimsical Load,2028,Comedy,Int'l
+10/12/12,Gorgeous Turn Inconclusive Creature Scientific,15034,Comedy,Domestic
+10/16/12,Rinse Rain Resolute Car Deep Trick,200033,Action,Global
+10/18/12,Brush Level Borrow Plastic Deserve Helpless,80030,Comedy,Indie
+10/18/12,Mark Friend Crown Whisper Experience,228116,Action,Indie
+10/24/12,Mountain Victorious Bolt Error Scientific Gate,1900061,Action,Domestic
+11/30/12,Plastic Bubble Duck Interest Nondescript Plastic,2500018,Action,Global
+1/24/13,Spare Notebook Remind Thoughtful Fearless Quack Tank,75055,Comedy,Indie
+2/8/13,Educated Harsh Alert Milk Cars,120032,Action,Global
+2/15/13,Dry Error Car Prepare Tank,500078,Action,Global
+3/1/13,Bubble Like Rotten Tearful,26320,Comedy,Global
+3/27/13,Skillful Cherries Friend Battle Shape,5009,Comedy,Domestic
+4/2/13,Sea Grandmother Pot Grandmother,650064,Action,Domestic
+4/15/13,Mountain Heady Tent,250064,Comedy,Domestic
+4/23/13,Wholesale Creature Battle Inconclusive Good,1500062,Action,Indie
+4/30/13,Dry Coast Plant Abashed Sprout Pan Pan,99952,Horror,Domestic
+5/9/13,Educated Guide Kick Kick Load Good Hate,25054,Comedy,Global
+5/9/13,Drain Fearless Helpless Infamous Public Heady Handy,344677,Horror,Global
+5/17/13,Force Wholesale Hushed Handy,123912,Action,Indie
+5/22/13,Melt Chop Cats Skillful,4022,Comedy,Global
+5/24/13,Milk Prepare Pin Experience Sink Paste,937082,Action,Global
+6/3/13,Battle Force Cherries Harsh Prepare Decorous,2098956,Action,Global
+6/6/13,Well-made Woman Plant Contain Hollow Shiny,487395,Action,Global
+6/10/13,Turn Plastic Turn Payment Lock,500034,Horror,Domestic
+6/27/13,Aftermath Mist Comparison,10042,Comedy,Domestic
+7/17/13,Mist Abashed Hum Prepare Shoe End,189023,Horror,Domestic
+7/29/13,Mark Preserve Painstaking Jobless,100083,Comedy,Domestic
+8/8/13,Ear Charming Cars Plant Cloudy Plant,100010,Horror,Int'l
+8/26/13,Harsh Whimsical Confused Gun Pump Decorous Cultured,100045,Comedy,Domestic
+8/29/13,Board Sink Table Sack,1050,Comedy,Domestic
+8/29/13,Force Nondescript Furry Painstaking Jump Surround,830032,Horror,Domestic
+9/3/13,Planes Handy Changeable Voracious Kiss,6600027,Horror,Domestic
+9/9/13,Brush Experience White Planes,1477023,Horror,Indie
+9/19/13,Inconclusive Comparison Rich,300090,Comedy,Indie
+9/20/13,Crate Borrow Dry Pump,400013,Comedy,Indie
+9/24/13,Fearless Quack Contain,5035,Comedy,Int'l
+9/25/13,Handy Like Abortive Steadfast Jeans,9902470,Action,Domestic
+10/2/13,Jobless Nondescript Comparison White Tearful,15004,Comedy,Domestic
+10/29/13,Tent Helpless Delight Error Hushed Spy Whole,2075,Comedy,Indie
+10/30/13,Jeans End Mountain Striped,500034,Comedy,Domestic
+11/4/13,Battle Fearless Scientific Mute,40057,Comedy,Domestic
+11/12/13,Borrow Delight Guide Preserve Guess Quick,10050,Comedy,Domestic
+11/29/13,Borrow Tent Melt Plant Voracious Board,452010,Horror,Int'l
+12/2/13,Busy Harmonious Whole Shape Rain,2250062,Action,Domestic
+12/5/13,Hushed Kick Tin Wine Tearful Rapid,25081,Comedy,Domestic
+12/10/13,Force Turn Plausible Disgusted,385477,Horror,Domestic
+12/10/13,Quick Lock Surround Nondescript Hum Cars,397949,Horror,Domestic
+12/10/13,Hollow Level Jeans Remind Victorious Hollow,400174,Horror,Domestic
+12/11/13,Well-made Defective Cats,476416,Horror,Domestic
+12/11/13,Infamous Rake Gate,499636,Horror,Domestic
+1/17/14,Like Helpless Guess Dysfunctional,40076,Comedy,Domestic
+1/17/14,Mountain Sink Heat Spicy Death,371070,Action,Global
+1/23/14,Quack Absorbed Deserve Shiny Crowded,160072,Action,Global
+2/7/14,Prepare Sprout Kick Decorous,72,Comedy,Domestic
+2/14/14,Level Abrasive Abundant Planes Plausible Skip,500002,Action,Global
+2/21/14,Fair Shiny Plant,50037,Comedy,Domestic
+2/25/14,Paste Thoughtful Door Rich,434236,Action,Global
+2/26/14,Handy Play Table Public,50053,Comedy,Domestic
+2/27/14,Judicious Gorgeous Compete Hushed,215689,Comedy,Domestic
+3/4/14,Bubble Melt Question Charming,601395,Comedy,Domestic
+3/14/14,Flimsy Horrible Dry Pray Heat,6079,Comedy,Domestic
+4/4/14,Bag Furry Quack Delight Statement,250052,Action,Domestic
+4/8/14,Cultured Sea Courageous Coast Crowded,200063,Horror,Int'l
+4/14/14,Abashed Abortive Deserve Superficial Play Aftermath Brush,25054,Comedy,Domestic
+4/16/14,Mist Need Pump Time Governor Cook,562946,Action,Indie
+4/16/14,Knowing Statement Plausible Shoe,562953,Action,Indie
+5/1/14,Guitar Question Time Outrageous Kitty,10020,Comedy,Domestic
+5/9/14,Preserve Hate Outrageous Prepare Decorous,2604134,Action,Global
+5/9/14,Aftermath Public Scientific Pray Mere Experience,2650059,Action,Global
+6/3/14,Electric Scorch Good Kick Statement,502001,Comedy,Domestic
+6/5/14,Tent Victorious Crown Aftermath Woman Person Preserve,8900046,Action,Domestic
+6/11/14,Moan Defective Glass,496222,Action,Domestic
+6/24/14,Preserve Shiny Superficial Question,350022,Comedy,Int'l
+6/25/14,Hot Obsequious Rake Like,4867460,Action,Int'l
+6/26/14,Dolls Public Pump Grip Stop Question Helpless,10062,Comedy,Domestic
+6/27/14,Absorbed Boiling Door Creature Horrible Level Scientific,3500005,Action,Global
+6/27/14,Mere Steadfast Pump Shiny Goofy Charming Death,4200046,Action,Global
+7/10/14,Clear Dazzling Abortive Crowded Dolls Good Question,989,Comedy,Indie
+7/10/14,Abundant Pan Outrageous Heady,20052,Comedy,Domestic
+7/14/14,Guitar Hot Heady Changeable Fair Deserve,492184,Action,Global
+7/18/14,Like Public Car Rake Jump Creature Obsequious,1400039,Horror,Domestic
+7/28/14,Whisper Courageous Educated Mountainous Creature,499342,Comedy,Domestic
+8/1/14,Tank Painstaking Borrow Mountainous,20000097,Action,Global
+8/12/14,Hollow Tent Turn Woman Stove,611553,Action,Global
+9/10/14,Shiny Shoe Crowded Heady,3500077,Horror,Domestic
+9/10/14,Preserve Superficial Disgusted Hate,8000078,Horror,Domestic
+9/12/14,Tin Error Furry Aftermath Mere,900024,Horror,Domestic
+9/12/14,Battle Shoe Plastic Prepare Quack Educated,1200067,Horror,Domestic
+9/12/14,Voracious Sea Well-made Disgusted Painstaking Vessel,1300073,Horror,Domestic
+9/12/14,Scientific Horrible Delight Grip,1800030,Horror,Domestic
+9/29/14,Cats Cars Striped Public,596097,Horror,Domestic
+9/30/14,Changeable Courageous Dazzling Turn,30024,Comedy,Domestic
+10/1/14,Ear Play Judicious,1025086,Action,Domestic
+10/3/14,Grandmother Time Duck Jump,1028765,Action,Domestic
+10/7/14,Load Guide Comparison Car,7507,Comedy,Domestic
+10/7/14,Fallacious Handy Hushed Superficial,391740,Action,Domestic
+10/7/14,Door Voracious Rotten Victorious Good Mere Preserve,500062,Action,Domestic
+10/8/14,Creature Jump Planes,25011,Comedy,Domestic
+10/17/14,Error Tin Knowing Time,172059,Comedy,Domestic
+10/24/14,Crowded Hate Mere Absorbed,6055,Comedy,Domestic
+10/24/14,Door Gun Tearful Glass,10060,Comedy,Int'l
+11/12/14,Tearful Goofy Shoe Tearful Wine,1700099,Action,Domestic
+12/2/14,Jump Duck Eminent Educated Boiling Disgusted Abashed,52474,Comedy,Domestic
+12/4/14,Voracious Outrageous Rake Electric,100054,Comedy,Domestic
+12/5/14,Trip Gorgeous Force,83259,Horror,Global
+12/5/14,Mute Helpless Striped Bolt Notebook,227118,Comedy,Domestic
+12/8/14,Changeable Outrageous Public Bubble Interest Contain,351420,Action,Domestic
+12/15/14,Grandmother Plant Good Decorous,140032,Action,Global
+12/29/14,Aftermath Melt Kick Paste,1440963,Action,Global
+1/2/15,Book Hammer Smart Abortive Jump,200040,Comedy,Domestic
+1/6/15,Quack Sink Car Friend Cook,100029,Horror,Domestic
+1/9/15,Jump Rotten Milk End Hammer Scientific,100027,Action,Domestic
+1/16/15,Charming Handy Furry Sea Plant,263380,Action,Global
+1/16/15,Creature Sprout Nondescript Electric Bag,1100024,Action,Global
+1/18/15,Busy End Charming Voracious Bubble Outrageous Horrible,236771,Action,Global
+1/21/15,Handy Violent Whole Mark,300030,Action,Global
+1/23/15,Dolls Charming Tin Abortive Striped Harmonious Juice,399638,Action,Global
+1/27/15,Careless Fearless Educated Interest Smart,10023,Comedy,Indie
+1/28/15,Voracious Dolls Pin Tank,1100077,Action,Global
+1/28/15,Spicy Horrible Aftermath Cats Courageous,1461713,Action,Global
+1/29/15,Board Nondescript Kitty Prepare Deserve,2507634,Action,Global
+1/30/15,Bolt Tent Steadfast Tin,1100028,Action,Global
+2/2/15,Delight Pump Payment Abortive Cultured,1047183,Action,Global
+2/2/15,Borrow Infamous Gun Judicious,1100020,Action,Global
+2/2/15,Cook End Glass,1434132,Action,Global
+2/13/15,Sprout Time Drain,10096,Comedy,Int'l
+2/13/15,Jump Time Hum Abundant Jeans,2100072,Action,Domestic
+2/23/15,Fair Gun Pot Hammer,738040,Action,Global
+2/23/15,Hammer undefined Fearless Dazzling Drain Guitar,3250028,Action,Global
+3/2/15,Lock Abundant Heady Quick Death,120085,Horror,Global
+3/4/15,Charming Violent Scorch Jobless,120302,Comedy,Domestic
+3/4/15,Fearless Paste Level Jump,2524221,Action,Domestic
+3/18/15,Pump Disgusted Shiny Spy Kick Furry Duck,499213,Action,Global
+3/24/15,Mint Crate Abortive,2800061,Comedy,Domestic
+3/27/15,Abortive Load Smart Death,2560030,Action,Global
+4/1/15,undefined Heady Mark Battle Lock,82,Comedy,Domestic
+4/2/15,Charming Stop Spy Moan Shape Duck Skip,950099,Action,Global
+4/4/15,Good Tin Pan Hushed,1000004,Action,Domestic
+4/7/15,Heady Guess Cook Plant Harmonious Rinse,1998810,Action,Global
+4/9/15,Abrasive Stove Heady Kiss Sea,397638,Action,Indie
+4/10/15,Milk Hollow Governor Wine Cloudy Question,7202,Comedy,Domestic
+4/10/15,Preserve Hate Fallacious Error Eminent Victorious,16073,Comedy,Domestic
+4/24/15,Chop Careless Grip Hushed Force Sink,274442,Horror,Domestic
+5/8/15,Infamous Lock Courageous,2625017,Action,Global
+5/13/15,Nondescript undefined Person Juice Stove Spare,2625023,Action,Global
+5/14/15,Spicy Skillful Plant Borrow End Notebook,2441559,Action,Global
+5/15/15,Dolls Scientific Kitty Guitar,648313,Action,Global
+5/18/15,Voracious Brush Brush Cars Grandmother,2700053,Action,Global
+5/21/15,Lock Spy Ear Book,400064,Action,Domestic
+5/21/15,Harmonious Steadfast Deserve Fallacious Skillful,1000047,Action,Domestic
+5/21/15,Fair Duck End Prepare Kiss,1000035,Action,Domestic
+5/21/15,Play Cultured Boiling Whisper,1000058,Action,Domestic
+5/21/15,Rake Jobless Disgusted Sack Play,1000036,Action,Domestic
+5/22/15,Death Steadfast Glass Pin Kiss,154093,Action,Global
+5/29/15,Rapid Careless Abortive Eminent Wine Thoughtful,566,Action,Indie
+6/3/15,Nondescript Tank Error Turn Abundant Trick,420027,Action,Global
+6/3/15,Like Rake Kitty Sink Question,2144616,Action,Global
+6/5/15,Crowded Glass Fair Tank Pot,249031,Comedy,Domestic
+6/8/15,Melt Tank Ear Hate End,136299,Action,Domestic
+6/8/15,Lock Rinse Flimsy Scorch,2175324,Action,Global
+6/9/15,Hollow Stove Skillful Judicious Goofy Charming Load,63,Comedy,Domestic
+6/18/15,Belief Quick Gate Careless Milk Rapid,130070,Comedy,Int'l
+6/18/15,Alert Alert Bolt Bubble Educated Glass,300048,Action,Global
+6/19/15,Thoughtful Obsequious Decorous Moan Thoughtful Moan Crowded,1997438,Action,Global
+6/26/15,Heady Fair Contain Violent,50091,Comedy,Domestic
+6/26/15,Grip Sack Whisper Governor Time,405154,Action,Global
+6/30/15,Absorbed Thoughtful Obsequious,118,Comedy,Domestic
+7/2/15,Superficial Guitar Mountain,500022,Action,Global
+7/20/15,Paste Level Knowing Book Busy,373025,Action,Domestic
+7/30/15,Wholesale Pot Heat Abortive Cultured Payment,1444728,Action,Global
+8/6/15,Person Person Painstaking Cherries Mountainous,323928,Action,Global
+8/13/15,Skip Table Dazzling Guide,1180089,Comedy,Int'l
+8/14/15,Voracious Need Pin Eminent Comparison Whole,15094,Comedy,Domestic
+8/14/15,Turn Careless Pan Cloudy Fair Hollow Rapid,340198,Action,Global
+8/18/15,Sea Whimsical Rain Duck Sack,447843,Action,Global
+8/19/15,Pot Skillful Crown Remind Interest,1246580,Comedy,Domestic
+8/20/15,Mist Mist Error Disgusted,100021,Action,Global
+8/28/15,Sack Mute Dolls Fearless Thoughtful,298857,Action,Global
+9/4/15,Crate Hum Educated,5056,Comedy,Domestic
+9/4/15,Abortive Force Gorgeous Shiny Crown Sprout,30051,Comedy,Domestic
+9/8/15,Guitar Handy Hate Guide Cultured Gun,7000004,Action,Domestic
+9/9/15,Jeans Dysfunctional Wine Crowded Clear Changeable Battle,5094,Comedy,Int'l
+9/9/15,Decorous Fallacious Aftermath Clear Pin Preserve,954063,Action,Domestic
+9/14/15,Absorbed Hammer Heat Grandmother,150045,Action,Domestic
+9/15/15,Mark Duck Borrow,1676049,Romantic,Global
+9/17/15,Infamous Mist Experience Busy Pest Mark,100023,Comedy,Domestic
+9/25/15,Scientific Paste Kiss Coast Aftermath,15025,Comedy,Domestic
+9/30/15,Rich Kitty Juice Cook,443194,Horror,Domestic
+10/14/15,Ear Alert Hum Mountain,379255,Action,Domestic
+10/14/15,Abortive Whole Wholesale Gate Thoughtful Milk Decorous,650098,Action,Domestic
+10/14/15,Pest Interest Fair Victorious,758001,Action,Domestic
+10/15/15,Planes Heady Play Abortive Borrow Friend Shiny,200027,Comedy,Domestic
+10/20/15,undefined Dysfunctional Shoe Governor Preserve,15055,Comedy,Domestic
+11/2/15,Decorous Abortive Fearless Spare Jeans Experience,639562,Action,Global
+11/13/15,Planes Gun Decorous Mountain Heady Plastic,383854,Action,Global
+11/16/15,Compete Quick Cloudy,10042,Comedy,Domestic
+11/16/15,Glass Person Eminent Hum,3680055,Action,Domestic
+11/20/15,Witty Nondescript Car Confused Governor Substantial,221,Comedy,Domestic
+11/23/15,Eminent Dolls Melt Prepare Vessel Disgusted Deep,245053,Comedy,Domestic
+11/24/15,Force Kick Fallacious Paste Car Moan,36,Comedy,Domestic
+12/1/15,Wine Planes Level Painstaking,7070,Comedy,Int'l
+12/2/15,Bubble Sprout Error Rapid,255199,Action,Global
+12/18/15,Well-made Sack Wholesale Cats Guess Mist Voracious,10029,Comedy,Domestic
+12/18/15,Boiling Quick Vessel Quick,1354749,Action,Global
+12/21/15,Changeable Interest Experience Turn Steadfast Time,504959,Action,Global
+12/30/15,Bubble Shiny Wine Time Dry Question,19658,Comedy,Global
+1/4/16,Quick Belief Interest Mark Quick Resolute,10081,Comedy,Int'l
+1/4/16,Error Spicy Substantial,532151,Horror,Int'l
+1/5/16,Mark Quick Payment Turn Rapid Dazzling,452428,Action,Global
+1/7/16,Busy Ear Boiling Statement Mere Helpless,60,Horror,Domestic
+1/9/16,Tin Milk Voracious Contain Error Pump,298831,Action,Global
+1/11/16,Resolute Tank Mark Tent Pray Hum,54844,Horror,Global
+1/11/16,Dysfunctional Mint Gate Guide Deserve Quack Smart,234085,Action,Global
+1/11/16,Hushed Dolls Gorgeous Comparison Sprout Hot Alert,463890,Action,Domestic
+1/15/16,Mark Heat Pest Pray,50073,Comedy,Global
+1/18/16,Heat Comparison Pump Spicy Deep Kitty Cook,100,Action,Domestic
+1/21/16,Borrow Sack Juice Car,25083,Comedy,Global
+1/22/16,Fallacious Hate Notebook Plastic Delight Scientific,300095,Action,Global
+1/26/16,Stove Striped Play Cats,397663,Horror,Int'l
+1/27/16,Scrub Payment Error End Eminent Load Goofy,700011,Action,Domestic
+1/29/16,Shape Inconclusive Trick Painstaking Bolt Handy Smart,1932027,Action,Global
+1/29/16,Heat Courageous Ear Abortive,2800097,Action,Global
+2/1/16,Chop Resolute Dry Skillful Battle Spicy,149813,Action,Int'l
+2/1/16,Force Coast undefined Remind Scrub Heat,700057,Action,Domestic
+2/2/16,Aftermath Like Door Absorbed Charming,700066,Action,Domestic
+2/2/16,Cloudy Obsequious Defective Smart,2079606,Action,Global
+2/3/16,Whole Comparison Judicious Interest,1200019,Action,Global
+2/3/16,Compete End Mountainous Guide Pot,2943601,Action,Global
+2/5/16,Changeable Drain Heady Plausible Coast,43083,Comedy,Domestic
+2/9/16,Compete Resolute Payment Kiss Deep Plastic Nondescript,349538,Horror,Int'l
+2/12/16,White Changeable Careless Quick Good Table,110007,Comedy,Int'l
+2/12/16,Like Tank Shiny Witty Cherries Milk Dry,321219,Action,Global
+2/16/16,Bubble Door Mere Death Scientific Friend,350045,Action,Global
+3/4/16,Hollow Courageous Violent Fearless,188082,Action,Global
+3/10/16,Outrageous Guess Gun Good White,50061,Comedy,Global
+3/11/16,Plausible Table Deep Guide,500004,Action,Global
+3/14/16,Time Remind Quack Confused,100077,Comedy,Global
+3/16/16,Prepare Absorbed Drain Crowded Shape Whole,599690,Comedy,Global
+3/17/16,Substantial Dysfunctional Violent Fallacious Public,50082,Comedy,Global
+3/17/16,Furry Horrible Disgusted Whisper Plant,1660420,Action,Global
+3/25/16,Infamous Superficial Pin Sack,100076,Action,Domestic
+3/30/16,Hot Tent Deep Governor,1180010,Action,Global
+4/1/16,Wine Cloudy Door Boiling Load,332912,Action,Global
+4/8/16,Decorous Creature Victorious Pray,520011,Action,Global
+4/11/16,Charming Guitar Crowded Brush Contain Time Hushed,6757,Comedy,Domestic
+4/12/16,Drain Pot Rich Jobless Absorbed Payment,12399,Comedy,Int'l
+4/19/16,Confused Hate Door Remind Outrageous Charming,2750889,Action,Global
+4/20/16,Rain Rain Grandmother,1299675,Horror,Domestic
+4/22/16,Chop Aftermath Helpless Rich Ear Quick Guess,166192,Action,Global
+4/22/16,Sink Charming Harsh Thoughtful,1402203,Action,Global
+4/27/16,Rinse Furry Bag,10029,Comedy,Int'l
+5/4/16,Sea Harmonious Book Person Planes Shoe,100094,Action,Global
+5/6/16,Vessel Kick Cats Quick Rain Payment,78048,Comedy,Global
+5/9/16,Abrasive Delight Rich,183556,Action,Global
+5/10/16,Milk Guide Bubble Lock Alert,9412,Action,Global
+5/13/16,Infamous Abortive Whimsical Changeable Violent,366257,Action,Global
+5/13/16,Rain Spare Car Well-made Tank,649664,Action,Global
+5/16/16,Fallacious Cherries Car Surround Victorious Rich,650047,Action,Global
+5/17/16,Rain Witty Whisper Heady,4500063,Action,Domestic
+5/20/16,Whimsical Inconclusive Melt Well-made Deserve Hollow,4559275,Action,Global
+5/24/16,Comparison Question Planes Fallacious Aftermath Dazzling,29051,Action,Global
+5/26/16,Moan Wholesale Violent,3184,Comedy,Global
+5/26/16,Furry Battle Spare Hammer Abrasive Table Delight,1200047,Action,Global
+5/31/16,Woman Turn Superficial Gorgeous Tin,1191289,Action,Global
+5/31/16,Plastic Witty Gorgeous Bag Judicious Violent Fallacious,4296556,Action,Global
+6/7/16,Car Crate Vessel Planes Statement Dry,100074,Action,Global
+6/8/16,Kick Changeable Moan Pest,379908,Action,Global
+6/8/16,Woman Rich Careless Turn Gorgeous Skip,915015,Action,Global
+6/9/16,Abrasive White Deep,40029,Horror,Domestic
+6/22/16,Thoughtful Coast Pin,300000,Action,Global
+6/30/16,Milk Prepare Electric Furry Trick Belief,1319764,Action,Global
+7/8/16,Rinse Painstaking Whole Public Car Deep,3250019,Horror,Int'l
+7/15/16,Dolls Stop Board,500030,Action,Global
+7/15/16,Substantial Alert Creature Comparison Helpless,600039,Action,Global
+7/19/16,Sprout Comparison Absorbed Superficial Horrible Disgusted,90037,Action,Domestic
+7/19/16,Governor Bolt Comparison Stop,516105,Action,Global
+7/26/16,Mist Spy Vessel Coast Resolute Inconclusive Voracious,5100,Comedy,Int'l
+7/27/16,Wholesale Cherries Educated Mountain Handy,376367,Romantic,Global
+7/29/16,Infamous Charming Gorgeous Electric Delight Melt,25040,Comedy,Global
+8/1/16,Flimsy Force Cats Knowing Sink Need,208128,Action,Global
+8/3/16,Cultured Level Cats Skip Milk Cultured Goofy,247272,Action,Global
+8/5/16,Duck Mountainous Tin Cook,149562,Comedy,Global
+8/19/16,Tank Skillful Mint Quick Creature,198244,Action,Global
+8/19/16,Wine Harmonious Scientific Preserve Kick Skillful Guide,1330092,Romantic,Domestic
+8/20/16,Courageous Crowded Nondescript,1000077,Comedy,Global
+8/23/16,Cherries Horrible Load Juice Voracious,247793,Action,Domestic
+8/25/16,Deep Kick Pray Rotten Gate Bubble,1172722,Romantic,Global
+8/31/16,Level Friend Creature,30029,Comedy,Indie
+9/2/16,Tank Kiss Trip Crowded,746971,Action,Global
+9/6/16,Cars Electric Vessel Spicy,147893,Action,Indie
+9/8/16,Pump Pot Resolute Kick Whole Violent Need,25007,Comedy,Global
+9/9/16,Experience Disgusted Sprout Door,420011,Action,Global
+9/9/16,Abundant Planes Gun Trick,29993126,Action,Global
+9/13/16,Board Plastic Confused Statement Rain,300030,Action,Global
+9/13/16,Crowded Quack Hate Belief Guide,13602183,Action,Domestic
+9/19/16,Furry Load Like,997247,Action,Global
+9/20/16,Mountainous Kick Pump Whimsical Cars Pray,236876,Romantic,Global
+9/26/16,Absorbed Horrible Striped Steadfast Smart,24008,Comedy,Domestic
+9/29/16,Friend Cloudy Glass Helpless Inconclusive Heat Jobless,299997,Action,Global
+9/30/16,Experience Wine Resolute Tin,299940,Action,Global
+10/3/16,Question Harmonious Pot Dazzling Trick Goofy,302641,Romantic,Global
+10/5/16,Woman Scientific Hum Furry Abashed,79389,Action,Global
+10/6/16,Scrub Battle Fair Contain Hot,365515,Action,Global
+10/7/16,Plastic Steadfast Judicious Moan,1000017,Comedy,Global
+10/11/16,Gun Mountain Witty Milk Prepare,380080,Action,Global
+10/13/16,Statement Abrasive Fair Substantial Painstaking,1000100,Comedy,Global
+10/19/16,Prepare Cook Cook,240055,Romantic,Global
+10/19/16,Person Absorbed Cars Person,6000055,Comedy,Global
+10/25/16,Friend Guitar Moan Well-made,147060,Comedy,Global
+10/28/16,Alert Abashed Cultured,100065,Comedy,Domestic
+11/4/16,Borrow Load Decorous,960085,Romantic,Int'l
+11/8/16,Skip Pray Pest Alert,1941989,Action,Global
+11/10/16,Whisper Surround Trick Compete Hot,250065,Action,Global
+11/14/16,Table Confused Judicious Educated Careless,2106301,Action,Global
+11/17/16,Obsequious Woman Glass Kiss Shape Knowing Lock,6436,Comedy,Domestic
+11/17/16,Smart Knowing Hushed Quack,2090477,Action,Global
+11/18/16,Mark Careless Dazzling Changeable Gate Electric Person,1440065,Comedy,Global
+11/18/16,Shape Grandmother Woman Well-made,2408212,Action,Global
+11/18/16,Glass End Knowing Paste Harmonious Kitty,3117503,Romantic,Global
+11/22/16,Mountainous Mark Skillful Remind Mint Shape Abashed,1319759,Romantic,Global
+11/22/16,Harsh Gate Handy Compete,1900449,Action,Global
+11/28/16,Abundant Woman Disgusted Need Superficial Witty,900044,Romantic,Domestic
+12/5/16,Heady Scrub Gun Creature,225036,Action,Indie
+12/5/16,Painstaking Chop Clear Bolt Dysfunctional Melt Abashed,250046,Comedy,Domestic
+12/5/16,Scorch Vessel Furry Tank,2600056,Romantic,Global
+12/9/16,Alert Rake Public Remind,262787,Action,Global
+12/16/16,Sack Shoe Disgusted Trick Knowing Milk,134609,Action,Global
+12/22/16,Horrible Quick Handy Dry Substantial,196338,Romantic,Global
+12/23/16,Gun Mountainous Mute Cars Decorous,103904,Action,Global
+12/30/16,Spy Shape Mark Shape Milk Violent Like,15000037,Romantic,Global
+1/3/17,Milk Glass Grandmother,1161393,Action,Global
+1/9/17,Stop Tearful Paste Rich,183923,Horror,Int'l
+1/10/17,Clear Thoughtful Absorbed,1105353,Action,Global
+1/11/17,Cherries Fallacious Voracious Handy Hum,870975,Romantic,Global
+1/23/17,Comparison Juice Pest Moan Glass Statement Substantial,384547,Romantic,Global
+1/27/17,Heat Rinse Smart Spare,600053,Comedy,Domestic
+2/3/17,Gun Hum Smart,336945,Romantic,Global
+2/3/17,Brush Superficial Electric,2100061,Action,Global
+2/9/17,Abrasive Whisper Crate Sea Pot Violent,300039,Action,Global
+2/10/17,Dry Dry Victorious Friend Outrageous,146627,Action,Global
+2/24/17,Chop Crown Grip Rinse Infamous Heady,384356,Romantic,Global
+3/2/17,Force Heady Careless Defective Turn,200058,Romantic,Domestic
+3/6/17,Compete Interest Bolt White Guide,286181,Action,Global
+3/8/17,Electric Shape Cultured Pot Sprout Knowing,1385736,Action,Global
+3/10/17,Thoughtful Time Fearless,2371786,Action,Global
+3/14/17,Hollow Chop Lock,1319785,Action,Global
+3/14/17,Kiss Governor Scrub Comparison Vessel Coast Scorch,1332559,Romantic,Global
+3/29/17,Preserve Rich Heat,650086,Action,Global
+3/31/17,Rapid Friend Pin Bag Moan Like Cloudy,1219407,Action,Global
+4/6/17,Thoughtful Absorbed Rain Jobless Crown Pin Cars,1133030,Action,Global
+4/7/17,Dolls Kitty Belief Quack Compete,59522,Action,Global
+4/12/17,Pump Guide Clear Trip,1206010,Romantic,Global
+4/12/17,Voracious Load Mist Interest Planes,2805568,Horror,Int'l
+4/12/17,Jobless Death Skip Rinse Plant,3907230,Action,Int'l
+4/17/17,Deep Person Death Confused Furry,2114661,Action,Global
+5/3/17,Hollow Belief Book Vessel Heat,619873,Action,Global
+5/5/17,Good Jump Decorous Melt,500003,Romantic,Global
+5/5/17,Melt Smart Need Milk,4630258,Action,Global
+5/17/17,Turn Error Time Infamous Kitty Bubble Pot,156034,Comedy,Global
+5/23/17,Tent Kick Outrageous,395856,Action,Global
+5/24/17,Plastic Rich Deserve Drain,185,Comedy,Domestic
+6/5/17,Ear Sea Boiling Juice,115,Comedy,Domestic
+6/5/17,Dysfunctional Time Eminent Hot Grandmother,67855,Action,Global
+6/6/17,Dysfunctional Cherries Notebook Turn Painstaking Shiny,570919,Action,Global
+6/15/17,Death Resolute Sink Car Striped,600039,Comedy,Domestic
+6/19/17,Inconclusive Statement Vessel Eminent Substantial,75006,Comedy,Global
+6/22/17,Deserve Tent Whimsical Stop Plastic Obsequious Boiling,200038,Action,Global
+6/27/17,Gorgeous Jump Abortive Deep Table,10040,Comedy,Domestic
+7/5/17,Chop Painstaking Cats Crowded Quack Cats,200063,Comedy,Domestic
+7/7/17,Changeable Smart Comparison Bubble Board,506574,Romantic,Global
+7/10/17,Error Gate Plastic,3500061,Romantic,Global
+7/13/17,Vessel Cultured Cats Book Remind,5029,Comedy,Domestic
+7/13/17,Obsequious Tin Contain Witty Scrub,669386,Action,Global
+7/27/17,Hum Plant Load Rain,844490,Action,Global
+7/28/17,Spicy Fallacious Sink Kitty Person Jump,175760,Romantic,Domestic
+8/3/17,Milk Lock Trip Force,183,Comedy,Domestic
+8/10/17,Interest Infamous Whole Pump Kiss Defective,207958,Action,Global
+8/14/17,Level Kick Harmonious Guess,389489,Action,Domestic
+8/15/17,Skillful Painstaking Courageous Chop Rich,830934,Romantic,Global
+8/30/17,Need Aftermath Woman Sack Absorbed Eminent Quick,299932,Romantic,Global
+9/5/17,Gun Harsh Whisper,345081,Action,Global
+9/13/17,Resolute Hate Need Skip,1000079,Romantic,Global
+9/25/17,Plastic Victorious Handy Plastic,20054,Comedy,Domestic
+10/9/17,Cloudy Rotten Pan Person,250016,Action,Domestic
+10/11/17,Payment Nondescript Mark Fair Horrible Hot Pump,35088,Romantic,Global
+12/13/17,Whole Spy Inconclusive,75058,Romantic,Global
+12/15/17,Statement Scorch Quick Error,251443,Action,Global
+12/26/17,Disgusted Rake Wholesale Milk Sack Infamous,2872314,Action,Global
+12/29/17,Shiny Changeable Trip Eminent Absorbed Pan,28090,Horror,Int'l
+1/3/18,Kitty Load Striped,621639,Action,Global
+1/8/18,Bag Milk Flimsy Tin,500032,Action,Global
+1/12/18,Cats Painstaking Decorous Trick Helpless,75035,Romantic,Global
+1/16/18,Table Play Crown Borrow,5051,Romantic,Global
+1/26/18,Borrow Abashed Rake Mint Creature,4268,Romantic,Global
+2/6/18,Mute Table Absorbed,1897495,Action,Global
+2/13/18,Wholesale Wholesale End,1025,Romantic,Global
+2/21/18,Hate Careless Tearful Table Need,499861,Action,Global
+2/23/18,Milk Cats Skip Hum Electric Mountainous Smart,699929,Action,Global
+3/5/18,Interest Rich Sack Resolute Clear Person,999566,Romantic,Global
+3/16/18,Guitar Sprout Spicy Hollow,299986,Action,Global
+4/5/18,Outrageous Scrub Cook Gate,1800072,Action,Int'l
+4/11/18,Aftermath Moan Preserve Brush Decorous Question,1800095,Action,Int'l
+4/17/18,Remind Remind Resolute Plant Gorgeous,50063,Comedy,Domestic
+4/20/18,Hate Creature Wine Prepare,149531,Romantic,Global
+5/23/18,Tearful Compete Coast Clear Pot Goofy,100040,Comedy,Global
+6/13/18,Quack Guess Abundant Pin Friend,750097,Romantic,Global

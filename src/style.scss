@@ -1,0 +1,102 @@
+
+$color-bg:#dedede; 
+$color-1:  #5E5C6C;
+$color-2: #0B5563;
+$color-3: #5299D3;
+$color-4: #BEB8EB;
+$color-font: #000;
+$color-selected-button: #fff;
+
+body {
+  font-family: Lato;
+  background-color: $color-bg;
+}
+
+.centering-container {
+  width: 1000px;
+  margin: auto;
+}
+
+.header-text {
+  font-weight: 700;
+  font-size: 3em;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  div {
+    margin: 10px;
+    border: solid 1px;
+    padding: 7px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .--selected {
+    background-color: $color-selected-button;
+    transition: background-color 0.5s;
+  }
+}
+
+.svg-and-sidebar {
+  clear: both;
+  height: 400px;
+  div {
+    float: left;
+  }
+
+  .svg-container {
+    width: 700px;
+    height: 100%;
+
+    .Romantic {
+      fill: $color-1;
+    }
+    .Comedy {
+      fill: $color-2;
+    }
+    .Horror {
+      fill: $color-3;
+    }
+    .Action {
+      fill: $color-4;
+    }
+  }
+
+  .sidebar {
+    width: 300px;
+    height: 100%;
+    position: relative;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .movie-name{
+        font-size: 2em;
+    }
+    .side-instructs {
+    //   position: absolute;
+    //   top: 50%;
+    //   transform: translate(0, -50%);
+
+      .arrow-and-text {
+        width: 80%;
+        font-size: 1.6em;
+
+        .arrow-left {
+          margin-top: 80px;
+          margin-right: 10px;
+          width: 0;
+          height: 0;
+          border-top: 10px solid transparent;
+          border-bottom: 10px solid transparent;
+          border-right: 10px solid $color-font;
+        }
+      }
+    }
+  }
+}

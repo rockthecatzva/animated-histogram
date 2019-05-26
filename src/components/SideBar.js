@@ -6,7 +6,8 @@ export default function SideBar(props) {
   return (
     <div className="sidebar">
       {props.data !== undefined ? (
-        <div id="side-tooltip" className="dnone">
+        <div id="side-tooltip" className="">
+          <p className="movie-name">{data.name}</p>
           <table>
             <tbody>
               <tr>
@@ -23,8 +24,7 @@ export default function SideBar(props) {
               </tr>
             </tbody>
           </table>
-          <p className="tool-label">MOVIE NAME</p>
-          <p className="movie-name">{data.name}</p>
+
           <div>
             <div className="legend-circle" />
             <p className="rfloat" />
