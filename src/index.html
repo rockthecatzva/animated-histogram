@@ -4,26 +4,105 @@
     <meta charset="utf-8" />
     <title>Animated Histogram</title>
     <style>
-        .svg-container{
-            border: solid 1px black;
-        }
+      body {
+        font-family: Lato;
+      }
 
-        .Romantic{
-          fill: #2A9D8F;
-        }
-        .Comedy{
-          fill: #E9C46A;
-        }
-        .Horror{
-          fill: #F4A261;
-        }
-        .Action{
-          fill: #E76F51;
-        }
+      #app {
+        width: 1200px;
+      }
+
+      .button-container {
+        width: 380px;
+        margin: auto;
+      }
+
+      .button-container div {
+        float: left;
+        margin: 10px;
+        border: solid 1px;
+        padding: 7px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .button-container .--selected {
+        background-color: red;
+      }
+
+
+      .svg-and-sidebar {
+        clear: both;
+        height: 400px;
+      }
+
+      .svg-and-sidebar div {
+        float: left;
+      }
+
+      .svg-container {
+        /* border: solid 1px black; */
+        width: 800px;
+        height: 100%;
+      }
+
+      .sidebar {
+        width: 200px;
+        height: 100%;
+        position: relative;
+      }
+
+      .side-instructs {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+
+      .arrow-and-text div,
+      p {
+        float: left;
+      }
+
+      .arrow-and-text p {
+        width: 80%;
+        font-size: 1.6em;
+      }
+
+      .arrow-left {
+        margin-top: 80px;
+        margin-right: 10px;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid blue;
+      }
+
+      .Romantic {
+        fill: #2a9d8f;
+      }
+      .Comedy {
+        fill: #e9c46a;
+      }
+      .Horror {
+        fill: #f4a261;
+      }
+      .Action {
+        fill: #e76f51;
+      }
     </style>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,500,700,900"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <p>hello</p>
+    <div class="header-box">
+      Image here
+      <div class="header-text">
+        HEADER HERE
+      </div>
+    </div>
     <div id="app"></div>
   </body>
 </html>

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import MenuButtonsAnimated from "./components/MenuButtonsAnimated";
+import SideBar from "./components/SideBar";
 
 import { select, selectAll } from "d3-selection";
 import { transition } from "d3-transition";
@@ -140,8 +142,10 @@ export default class App extends Component {
       .remove();
   };
 
-  //DONT ATTACH DATA AS ATTRIBUTES!!!
-  //USE
+  updateSideBar = (sideBarData = undefined) => {
+    this.setState({ sideBarData });
+  };
+
   initBubbles = data => {
     this.g
       .selectAll("circle")
@@ -152,17 +156,17 @@ export default class App extends Component {
       .attr("cx", this.width / 2)
       .attr("cy", -100)
       .attr("fill", "#71C8AF")
-      .attr("r", histoUtils.standardRadius);
-    //   .on("mouseenter", )
-    //   .on("mouseleave", );
+      .attr("r", histoUtils.standardRadius)
+      .on("mouseenter", d => this.updateSideBar(d))
+      .on("mouseleave", () => this.updateSideBar());
   };
 
-  //   updateToggleButtons = target => {
-  //     document.querySelectorAll(".button-animationtoggle").forEach(e => {
-  //       e.classList.remove("highlight");
-  //     });
-  //     document.querySelector(target).classList.add("highlight");
-  //   };
+  // updateToggleButtons = target => {
+  //   document.querySelectorAll(".button-animationtoggle").forEach(e => {
+  //     e.classList.remove("highlight");
+  //   });
+  //   document.querySelector(target).classList.add("highlight");
+  // };
 
   histoByYear = data => {
     // updateToggleButtons("#year");
@@ -330,7 +334,9 @@ export default class App extends Component {
 
   state = {
     runAnimation: true,
-    hasStarted: false
+    hasStarted: false,
+    sideBarData: undefined,
+    selectedHistoButton: 0
   };
 
   componentDidMount() {
@@ -359,8 +365,8 @@ export default class App extends Component {
       }
     ];
 
-    this.width = 800;
-    this.height = 400;
+    this.width = this.svgContainer.clientWidth;
+    this.height = this.svgContainer.clientHeight;
 
     this.svg = select(".svg-container")
       .append("svg")
@@ -372,11 +378,31 @@ export default class App extends Component {
     this.animationHopper(anims);
   }
 
+  onHistoButtonClick = i=>{
+    this.setState({selectedHistoButton: i})
+  }
+
   render() {
+    const { selectedHistoButton } = this.state;
+console.log(selectedHistoButton)
     return (
       <div>
-        <p>React here!</p>
-        <div className="svg-container" />
+        <MenuButtonsAnimated
+          selectedButton={selectedHistoButton}
+          onButtonClick={i => this.onHistoButtonClick(i)}
+        >
+          <div>Type</div>
+          <div>Year</div>
+          <div>Distribution</div>
+          <div>Ticket Sales</div>
+        </MenuButtonsAnimated>
+        <div className="svg-and-sidebar">
+          <div
+            className="svg-container"
+            ref={ref => (this.svgContainer = ref)}
+          />
+          <SideBar data={this.state.sideBarData} />
+        </div>
       </div>
     );
   }

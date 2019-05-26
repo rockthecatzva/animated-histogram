@@ -1,5 +1,3 @@
-//HanoverHistogramBubbles
-
 const STANDARD_RADIUS = 4.2, //use a getter/setter?
   COL_WIDTH = 5, //use a getter/setter?
   PADDING = 2.9, //use a getter/setter?
@@ -18,10 +16,10 @@ exports.tagGetter = data =>
     }, [])
     .sort((a, b) => a - b);
 
-exports.countGetter = (tags, extractor, bubs) =>
-  tags.map(t => {
-    return bubs.filter(b => extractor(b) === t).length;
-  });
+// exports.countGetter = (tags, extractor, bubs) =>
+//   tags.map(t => {
+//     return bubs.filter(b => extractor(b) === t).length;
+//   });
 
 exports.centerX = (rowsColsData, width) => {
   const maxIndex = rowsColsData.reduce(
