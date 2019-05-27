@@ -190,11 +190,14 @@ export default class App extends Component {
       y: valueY[i]
     }));
 
-    this.setState({ selectedHistoButton: buttonId, chartTitle: "Revenue by Year" }, () => {
-      this.drawHistogram(xys);
-      this.drawAxisLabels(xAxisLabels);
-      this.drawValueLabels(valueLabels);
-    });
+    this.setState(
+      { selectedHistoButton: buttonId, chartTitle: "Revenue by Year" },
+      () => {
+        this.drawHistogram(xys);
+        this.drawAxisLabels(xAxisLabels);
+        this.drawValueLabels(valueLabels);
+      }
+    );
   };
 
   histoByTicketSales = (data, buttonId) => {
@@ -260,11 +263,17 @@ export default class App extends Component {
       y: valueY[i]
     }));
 
-    this.setState({ selectedHistoButton: buttonId , chartTitle: "Movies Grouped by Revenue"}, () => {
-      this.drawHistogram(xys);
-      this.drawAxisLabels(xAxisLabels);
-      this.drawValueLabels(valueLabels);
-    });
+    this.setState(
+      {
+        selectedHistoButton: buttonId,
+        chartTitle: "Movies Grouped by Revenue"
+      },
+      () => {
+        this.drawHistogram(xys);
+        this.drawAxisLabels(xAxisLabels);
+        this.drawValueLabels(valueLabels);
+      }
+    );
   };
 
   histoByPlatform = (data, buttonId, histoAttribute) => {
@@ -310,12 +319,12 @@ export default class App extends Component {
     }));
 
     let chartTitle;
-    switch(histoAttribute){
+    switch (histoAttribute) {
       case "type":
-        chartTitle="Movies by Genre"
-      break;
+        chartTitle = "Movies by Genre";
+        break;
       case "group":
-        chartTitle="Movies by Distribution"
+        chartTitle = "Movies by Distribution";
         break;
     }
 
@@ -403,7 +412,12 @@ export default class App extends Component {
   };
 
   render() {
-    const { selectedHistoButton, sideBarData, showInstructions, chartTitle } = this.state;
+    const {
+      selectedHistoButton,
+      sideBarData,
+      showInstructions,
+      chartTitle
+    } = this.state;
 
     return (
       <div className="centering-container">
@@ -422,12 +436,9 @@ export default class App extends Component {
           <div>Ticket Sales</div>
         </MenuButtonsAnimated>
         <div className="svg-and-sidebar">
-          <div
-            className="svg-container"
-            ref={ref => (this.svgContainer = ref)}
-          > 
+          <div className="svg-container" ref={ref => (this.svgContainer = ref)}>
             <h3>{chartTitle}</h3>
-            </div>
+          </div>
           <SideBar data={sideBarData} showInstructions={showInstructions} />
         </div>
 
