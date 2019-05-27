@@ -6,6 +6,8 @@ import SideBar from "./components/SideBar";
 import { select, selectAll } from "d3-selection";
 import { transition } from "d3-transition";
 
+import img_film from "./images/film.png";
+
 const histoUtils = require("./components/HistogramUtilities");
 
 const dataFile = require("../src/data.json");
@@ -141,12 +143,7 @@ export default class App extends Component {
   };
 
   histoByYear = (data, buttonId) => {
-    // updateToggleButtons("#year");
-
-    //2. get unduplicated list of tags
     const tags = histoUtils.tagGetter(data.map(d => d.year));
-
-    //get row and column positions
     const rcs = histoUtils.rowColGetter_fixedColumnWidth(
       tags,
       "year",
@@ -201,9 +198,7 @@ export default class App extends Component {
   };
 
   histoByTicketSales = (data, buttonId) => {
-    // updateToggleButtons("#award");
-
-    const sales_groupings = [
+    const salesGroupings = [
       { label: "0-25k", min: 0, max: 25000 },
       { label: "25-100k", min: 25000, max: 100000 },
       { label: "100-250k", min: 100000, max: 250000 },
@@ -212,19 +207,19 @@ export default class App extends Component {
       { label: "1M-2.5M", min: 1000000, max: 2500000 },
       { label: "2.5M-30M", min: 2500000, max: 30000000 }
     ];
-    // const bubs = [...document.querySelectorAll(".bubble")];
+
     const rcs = histoUtils.rowColGetter_fixedColumnWidth(
-      sales_groupings,
+      salesGroupings,
       "ticket_sales",
       data,
-      histoUtils.indexGetterRanges(sales_groupings)
+      histoUtils.indexGetterRanges(salesGroupings)
     );
     const centerX = histoUtils.centerX(rcs, this.width);
     const xys = histoUtils.xYGetter(rcs, centerX, this.height);
 
-    const indexGetter = histoUtils.indexGetterRanges(sales_groupings);
+    const indexGetter = histoUtils.indexGetterRanges(salesGroupings);
 
-    const salesByTag = sales_groupings.map(
+    const salesByTag = salesGroupings.map(
       (t, i) =>
         "$" +
         (
@@ -242,7 +237,7 @@ export default class App extends Component {
       histoUtils.columnWidth - 1
     );
 
-    const xAxisLabels = sales_groupings
+    const xAxisLabels = salesGroupings
       .map(a => a.label)
       .map((t, i) => ({
         text: t,
@@ -251,13 +246,13 @@ export default class App extends Component {
       }));
 
     const valueY = histoUtils.valueLabelYPositions(
-      sales_groupings,
+      salesGroupings,
       rcs,
       this.height,
       40
     );
 
-    const valueLabels = sales_groupings.map((t, i) => ({
+    const valueLabels = salesGroupings.map((t, i) => ({
       text: salesByTag[i],
       x: labelX[i],
       y: valueY[i]
@@ -277,9 +272,6 @@ export default class App extends Component {
   };
 
   histoByPlatform = (data, buttonId, histoAttribute) => {
-    // updateToggleButtons("#" + histoAttribute);
-
-    // const bubs = [...document.querySelectorAll(".bubble")];
     const tags = histoUtils.tagGetter(data.map(d => d[histoAttribute]));
     const rcs = histoUtils.rowColGetter_dynamicColumnWidth(
       tags,
@@ -391,23 +383,25 @@ export default class App extends Component {
 
   onHistoButtonClick = i => {
     window.clearTimeout(this.timeoutID);
-    switch (i) {
-      case 0:
-        //type
-        this.histoByPlatform(this.data, 0, "type");
-        break;
-      case 1:
-        //year
-        this.histoByYear(this.data, 1);
-        break;
-      case 2:
-        //dist
-        this.histoByPlatform(this.data, 2, "group");
-        break;
-      case 3:
-        //ticket sales
-        this.histoByTicketSales(this.data, 3);
-        break;
+    if (i !== this.state.selectedHistoButton) {
+      switch (i) {
+        case 0:
+          //type
+          this.histoByPlatform(this.data, 0, "type");
+          break;
+        case 1:
+          //year
+          this.histoByYear(this.data, 1);
+          break;
+        case 2:
+          //dist
+          this.histoByPlatform(this.data, 2, "group");
+          break;
+        case 3:
+          //ticket sales
+          this.histoByTicketSales(this.data, 3);
+          break;
+      }
     }
   };
 
@@ -422,8 +416,11 @@ export default class App extends Component {
     return (
       <div className="centering-container">
         <div className="header-container">
-          Image here
-          <h1 className="header-text">MOVIE BOX OFFICE PERFORMANCE</h1>
+          <div>
+            <img className="header-img" src={img_film} />
+            <h1 className="header-text">MOVIE BOX OFFICE PERFORMANCE</h1>
+          </div>
+
           <h5 className="disclaimer">*using totally random data...for now</h5>
         </div>
         <MenuButtonsAnimated

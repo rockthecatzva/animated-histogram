@@ -19,15 +19,22 @@ body {
 }
 
 .header-container {
+  .header-img {
+    width: 120px;
+    height: auto;
+    float: left;
+  }
   .header-text {
     font-weight: 700;
     font-size: 3em;
     margin-bottom: 0px;
+    padding-top: 1.1em;
   }
 
   .disclaimer {
     font-size: 0.8em;
-    // text-align: right;
+    text-align: right;
+    margin-right: 67px;
     margin-top: 0;
   }
 }
