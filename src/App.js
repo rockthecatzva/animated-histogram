@@ -6,6 +6,8 @@ import SideBar from "./components/SideBar";
 import { select, selectAll } from "d3-selection";
 import { transition } from "d3-transition";
 
+import img_film from "./images/film.png";
+
 const histoUtils = require("./components/HistogramUtilities");
 
 const dataFile = require("../src/data.json");
@@ -32,7 +34,6 @@ export default class App extends Component {
       }
     }, data[0].delay);
   };
-  //
 
   drawAxisLabels = data => {
     const xLabs = this.g.selectAll(".xaxis-labels").data(data);
@@ -117,6 +118,7 @@ export default class App extends Component {
 
   initBubbles = data => {
     const { updateSideBar } = this;
+    const par = this;
 
     this.g
       .selectAll("circle")
@@ -130,76 +132,52 @@ export default class App extends Component {
       .attr("r", histoUtils.standardRadius)
       .on("mouseenter", function(d) {
         select(this).attr("r", histoUtils.standardRadius + 3);
-
-        updateSideBar(d);
+        par.setState({ showInstructions: false, sideBarData: d });
+        // updateSideBar(d);
       })
       .on("mouseleave", function(d) {
         select(this).attr("r", histoUtils.standardRadius);
+        par.setState({ showInstructions: true });
         // updateSideBar();
       });
   };
 
   histoByYear = (data, buttonId) => {
-    // updateToggleButtons("#year");
+    const labelFormatter = (
+      tag // THIS SHOULD PROBABLY ONLY DO the division and "$M" parts the sum by tag should be handled in  util
+    ) =>
+      "$" +
+      (
+        data
+          .filter(d => d.year === tag)
+          .reduce((acc, curr) => acc + curr["ticket_sales"], 0) / 1000000
+      ).toFixed(1) +
+      "M";
 
-    //2. get unduplicated list of tags
-    const tags = histoUtils.tagGetter(data.map(d => d.year));
-
-    //get row and column positions
-    const rcs = histoUtils.rowColGetter_fixedColumnWidth(
-      tags,
-      "year",
+    const {
+      bubblePositions,
+      xAxisLabels,
+      valueLabels
+    } = histoUtils.histogramFixedWidthDiscreteValues(
       data,
-      histoUtils.indexGetterDiscrete(tags)
+      "year",
+      this.height,
+      this.width,
+      labelFormatter
     );
 
-    //3. figure out how much spacing we need to center the graph
-    const centerX = histoUtils.centerX(rcs, this.width);
-    //use the row/col to calc an x and y position
-    const xys = histoUtils.xYGetter(rcs, centerX, this.height);
-    const salesByTag = tags.map(
-      tag =>
-        "$" +
-        (
-          data
-            .filter(d => d.year === tag)
-            .reduce((acc, curr) => acc + curr["ticket_sales"], 0) / 1000000
-        ).toFixed(1) +
-        "M"
+    this.setState(
+      { selectedHistoButton: buttonId, chartTitle: "Revenue by Year" },
+      () => {
+        this.drawHistogram(bubblePositions);
+        this.drawAxisLabels(xAxisLabels);
+        this.drawValueLabels(valueLabels);
+      }
     );
-
-    const labelX = histoUtils.labelXPositions(
-      salesByTag,
-      rcs,
-      centerX,
-      histoUtils.columnWidth - 1
-    );
-
-    const xAxisLabels = tags.map((t, i) => ({
-      text: t,
-      x: labelX[i],
-      y: this.height - 5
-    }));
-
-    const valueY = histoUtils.valueLabelYPositions(tags, rcs, this.height, 40);
-
-    const valueLabels = tags.map((t, i) => ({
-      text: salesByTag[i],
-      x: labelX[i],
-      y: valueY[i]
-    }));
-
-    this.setState({ selectedHistoButton: buttonId }, () => {
-      this.drawHistogram(xys);
-      this.drawAxisLabels(xAxisLabels);
-      this.drawValueLabels(valueLabels);
-    });
   };
 
   histoByTicketSales = (data, buttonId) => {
-    // updateToggleButtons("#award");
-
-    const sales_groupings = [
+    const salesGroupings = [
       { label: "0-25k", min: 0, max: 25000 },
       { label: "25-100k", min: 25000, max: 100000 },
       { label: "100-250k", min: 100000, max: 250000 },
@@ -208,109 +186,84 @@ export default class App extends Component {
       { label: "1M-2.5M", min: 1000000, max: 2500000 },
       { label: "2.5M-30M", min: 2500000, max: 30000000 }
     ];
-    // const bubs = [...document.querySelectorAll(".bubble")];
-    const rcs = histoUtils.rowColGetter_fixedColumnWidth(
-      sales_groupings,
-      "ticket_sales",
-      data,
-      histoUtils.indexGetterRanges(sales_groupings)
-    );
-    const centerX = histoUtils.centerX(rcs, this.width);
-    const xys = histoUtils.xYGetter(rcs, centerX, this.height);
 
-    const indexGetter = histoUtils.indexGetterRanges(sales_groupings);
-
-    const salesByTag = sales_groupings.map(
-      (t, i) =>
+    const formattedLabels = salesGroupings.map(t => {
+      return (
         "$" +
         (
           data
-            .filter(b => indexGetter(b["ticket_sales"]) === i)
+            .filter(
+              d => d["ticket_sales"] >= t.min && d["ticket_sales"] < t.max
+            )
             .reduce((acc, curr) => acc + curr["ticket_sales"], 0) / 1000000
         ).toFixed(1) +
         "M"
-    );
-
-    const labelX = histoUtils.labelXPositions(
-      salesByTag,
-      rcs,
-      centerX,
-      histoUtils.columnWidth - 1
-    );
-
-    const xAxisLabels = sales_groupings
-      .map(a => a.label)
-      .map((t, i) => ({
-        text: t,
-        x: labelX[i],
-        y: this.height - 5
-      }));
-
-    const valueY = histoUtils.valueLabelYPositions(
-      sales_groupings,
-      rcs,
-      this.height,
-      40
-    );
-
-    const valueLabels = sales_groupings.map((t, i) => ({
-      text: salesByTag[i],
-      x: labelX[i],
-      y: valueY[i]
-    }));
-
-
-    this.setState({ selectedHistoButton: buttonId }, () => {
-      this.drawHistogram(xys);
-      this.drawAxisLabels(xAxisLabels);
-      this.drawValueLabels(valueLabels);
+      );
     });
+    // const labelFormatter = v => "$" + (v / 1000000).toFixed(1) + "M";
+
+    const {
+      bubblePositions,
+      xAxisLabels,
+      valueLabels
+    } = histoUtils.histogramFixedWidthRangeValues(
+      data,
+      "ticket_sales",
+      this.height,
+      this.width,
+      formattedLabels,
+      salesGroupings
+    );
+
+    this.setState(
+      {
+        selectedHistoButton: buttonId,
+        chartTitle: "Movies Grouped by Revenue"
+      },
+      () => {
+        this.drawHistogram(bubblePositions);
+        this.drawAxisLabels(xAxisLabels);
+        this.drawValueLabels(valueLabels);
+      }
+    );
   };
 
   histoByPlatform = (data, buttonId, histoAttribute) => {
-    // updateToggleButtons("#" + histoAttribute);
+    const labelFormatter = (
+      tag // THIS SHOULD PROBABLY ONLY DO the division and "$M" parts the sum by tag should be handled in  util
+    ) =>
+      "$" +
+      (
+        data
+          .filter(d => d[histoAttribute] === tag)
+          .reduce((acc, curr) => acc + curr["ticket_sales"], 0) / 1000000
+      ).toFixed(1) +
+      "M";
 
-    // const bubs = [...document.querySelectorAll(".bubble")];
-    const tags = histoUtils.tagGetter(data.map(d => d[histoAttribute]));
-    const rcs = histoUtils.rowColGetter_dynamicColumnWidth(
-      tags,
-      histoAttribute,
+    let chartTitle;
+    switch (histoAttribute) {
+      case "type":
+        chartTitle = "Movies by Genre";
+        break;
+      case "group":
+        chartTitle = "Movies by Distribution";
+        break;
+    }
+
+    const {
+      bubblePositions,
+      xAxisLabels,
+      valueLabels
+    } = histoUtils.histogramDynamicWidthDiscreteValues(
       data,
-      histoUtils.indexGetterDiscrete(tags)
-    );
-    const centerX = histoUtils.centerX(rcs, this.width);
-    const xys = histoUtils.xYGetter(rcs, centerX, this.height);
-
-    const salesByTag = tags.map(
-      tag =>
-        "$" +
-        (
-          data
-            .filter(b => b[histoAttribute] === tag)
-            .reduce((acc, curr) => acc + parseInt(curr["ticket_sales"]), 0) /
-          1000000
-        ).toFixed(1) +
-        "M"
+      histoAttribute,
+      this.height,
+      this.width,
+      labelFormatter
     );
 
-    const labelX = histoUtils.labelXPositions(salesByTag, rcs, centerX);
-
-    const xAxisLabels = tags.map((t, i) => ({
-      text: t,
-      x: labelX[i],
-      y: this.height - 5
-    }));
-
-    const valueY = histoUtils.valueLabelYPositions(tags, rcs, this.height, 40);
-
-    const valueLabels = tags.map((t, i) => ({
-      text: salesByTag[i],
-      x: labelX[i],
-      y: valueY[i]
-    }));
-
-    this.setState({ selectedHistoButton: buttonId }, () => {
-      this.drawHistogram(xys);
+    this.setState({ selectedHistoButton: buttonId, chartTitle }, () => {
+      this.drawHistogram(bubblePositions);
       this.drawAxisLabels(xAxisLabels);
       this.drawValueLabels(valueLabels);
     });
@@ -320,7 +273,9 @@ export default class App extends Component {
     runAnimation: true,
     hasStarted: false,
     sideBarData: undefined,
-    selectedHistoButton: undefined
+    showInstructions: true,
+    selectedHistoButton: undefined,
+    chartTitle: ""
   };
 
   componentDidMount() {
@@ -344,14 +299,14 @@ export default class App extends Component {
 
     const anims = [
       { delay: 0, dur: 0, animator: () => this.histoByYear(data, 1) },
-      { delay: 2500, dur: 0, animator: () => this.histoByTicketSales(data, 3) },
+      { delay: 3500, dur: 0, animator: () => this.histoByTicketSales(data, 3) },
       {
-        delay: 2500,
+        delay: 3500,
         dur: 0,
         animator: () => this.histoByPlatform(data, 0, "type")
       },
       {
-        delay: 2500,
+        delay: 3500,
         dur: 0,
         animator: () => this.histoByPlatform(data, 2, "group")
       }
@@ -369,36 +324,46 @@ export default class App extends Component {
   }
 
   onHistoButtonClick = i => {
-    // this.setState({ selectedHistoButton: i });
     window.clearTimeout(this.timeoutID);
-    switch (i) {
-      case 0:
-        //type
-        this.histoByPlatform(this.data, 0, "type");
-        break;
-      case 1:
-        //year
-        this.histoByYear(this.data, 1);
-        break;
-      case 2:
-        //dist
-        this.histoByPlatform(this.data, 2, "group");
-        break;
-      case 3:
-        //ticket sales
-        this.histoByTicketSales(this.data, 3);
-        break;
+    if (i !== this.state.selectedHistoButton) {
+      switch (i) {
+        case 0:
+          //type
+          this.histoByPlatform(this.data, 0, "type");
+          break;
+        case 1:
+          //year
+          this.histoByYear(this.data, 1);
+          break;
+        case 2:
+          //dist
+          this.histoByPlatform(this.data, 2, "group");
+          break;
+        case 3:
+          //ticket sales
+          this.histoByTicketSales(this.data, 3);
+          break;
+      }
     }
   };
 
   render() {
-    const { selectedHistoButton } = this.state;
+    const {
+      selectedHistoButton,
+      sideBarData,
+      showInstructions,
+      chartTitle
+    } = this.state;
 
     return (
       <div className="centering-container">
         <div className="header-container">
-          Image here
-          <div className="header-text">MOVIE BOX OFFICE PERFORMANCE</div>
+          <div>
+            <img className="header-img" src={img_film} />
+            <h1 className="header-text">MOVIE BOX OFFICE PERFORMANCE</h1>
+          </div>
+
+          <h5 className="disclaimer">*using totally random data...for now</h5>
         </div>
         <MenuButtonsAnimated
           selectedButton={selectedHistoButton}
@@ -410,11 +375,32 @@ export default class App extends Component {
           <div>Ticket Sales</div>
         </MenuButtonsAnimated>
         <div className="svg-and-sidebar">
-          <div
-            className="svg-container"
-            ref={ref => (this.svgContainer = ref)}
-          />
-          <SideBar data={this.state.sideBarData} />
+          <div className="svg-container" ref={ref => (this.svgContainer = ref)}>
+            <h3>{chartTitle}</h3>
+          </div>
+          <SideBar data={sideBarData} showInstructions={showInstructions} />
+        </div>
+
+        <div className="legend-container">
+          <h3>Legend</h3>
+          <ul>
+            <li>
+              <div className="Action" />
+              Action
+            </li>
+            <li>
+              <div className="Comedy" />
+              Comedy
+            </li>
+            <li>
+              <div className="Horror" />
+              Horror
+            </li>
+            <li>
+              <div className="Romantic" />
+              Romantic
+            </li>
+          </ul>
         </div>
       </div>
     );
