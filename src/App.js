@@ -259,6 +259,7 @@ export default class App extends Component {
       y: valueY[i]
     }));
 
+
     this.setState({ selectedHistoButton: buttonId }, () => {
       this.drawHistogram(xys);
       this.drawAxisLabels(xAxisLabels);
