@@ -32,7 +32,6 @@ export default class App extends Component {
       }
     }, data[0].delay);
   };
-  //
 
   drawAxisLabels = data => {
     const xLabs = this.g.selectAll(".xaxis-labels").data(data);
@@ -117,6 +116,7 @@ export default class App extends Component {
 
   initBubbles = data => {
     const { updateSideBar } = this;
+    const par = this;
 
     this.g
       .selectAll("circle")
@@ -130,11 +130,12 @@ export default class App extends Component {
       .attr("r", histoUtils.standardRadius)
       .on("mouseenter", function(d) {
         select(this).attr("r", histoUtils.standardRadius + 3);
-
-        updateSideBar(d);
+        par.setState({ showInstructions: false, sideBarData: d });
+        // updateSideBar(d);
       })
       .on("mouseleave", function(d) {
         select(this).attr("r", histoUtils.standardRadius);
+        par.setState({ showInstructions: true });
         // updateSideBar();
       });
   };
@@ -189,7 +190,7 @@ export default class App extends Component {
       y: valueY[i]
     }));
 
-    this.setState({ selectedHistoButton: buttonId }, () => {
+    this.setState({ selectedHistoButton: buttonId, chartTitle: "Revenue by Year" }, () => {
       this.drawHistogram(xys);
       this.drawAxisLabels(xAxisLabels);
       this.drawValueLabels(valueLabels);
@@ -259,8 +260,7 @@ export default class App extends Component {
       y: valueY[i]
     }));
 
-
-    this.setState({ selectedHistoButton: buttonId }, () => {
+    this.setState({ selectedHistoButton: buttonId , chartTitle: "Movies Grouped by Revenue"}, () => {
       this.drawHistogram(xys);
       this.drawAxisLabels(xAxisLabels);
       this.drawValueLabels(valueLabels);
@@ -309,7 +309,17 @@ export default class App extends Component {
       y: valueY[i]
     }));
 
-    this.setState({ selectedHistoButton: buttonId }, () => {
+    let chartTitle;
+    switch(histoAttribute){
+      case "type":
+        chartTitle="Movies by Genre"
+      break;
+      case "group":
+        chartTitle="Movies by Distribution"
+        break;
+    }
+
+    this.setState({ selectedHistoButton: buttonId, chartTitle }, () => {
       this.drawHistogram(xys);
       this.drawAxisLabels(xAxisLabels);
       this.drawValueLabels(valueLabels);
@@ -320,7 +330,9 @@ export default class App extends Component {
     runAnimation: true,
     hasStarted: false,
     sideBarData: undefined,
-    selectedHistoButton: undefined
+    showInstructions: true,
+    selectedHistoButton: undefined,
+    chartTitle: ""
   };
 
   componentDidMount() {
@@ -369,7 +381,6 @@ export default class App extends Component {
   }
 
   onHistoButtonClick = i => {
-    // this.setState({ selectedHistoButton: i });
     window.clearTimeout(this.timeoutID);
     switch (i) {
       case 0:
@@ -392,13 +403,14 @@ export default class App extends Component {
   };
 
   render() {
-    const { selectedHistoButton } = this.state;
+    const { selectedHistoButton, sideBarData, showInstructions, chartTitle } = this.state;
 
     return (
       <div className="centering-container">
         <div className="header-container">
           Image here
-          <div className="header-text">MOVIE BOX OFFICE PERFORMANCE</div>
+          <h1 className="header-text">MOVIE BOX OFFICE PERFORMANCE</h1>
+          <h5 className="disclaimer">*using totally random data...for now</h5>
         </div>
         <MenuButtonsAnimated
           selectedButton={selectedHistoButton}
@@ -413,8 +425,32 @@ export default class App extends Component {
           <div
             className="svg-container"
             ref={ref => (this.svgContainer = ref)}
-          />
-          <SideBar data={this.state.sideBarData} />
+          > 
+            <h3>{chartTitle}</h3>
+            </div>
+          <SideBar data={sideBarData} showInstructions={showInstructions} />
+        </div>
+
+        <div className="legend-container">
+          <h3>Legend</h3>
+          <ul>
+            <li>
+              <div className="Action" />
+              Action
+            </li>
+            <li>
+              <div className="Comedy" />
+              Comedy
+            </li>
+            <li>
+              <div className="Horror" />
+              Horror
+            </li>
+            <li>
+              <div className="Romantic" />
+              Romantic
+            </li>
+          </ul>
         </div>
       </div>
     );
