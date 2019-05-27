@@ -1,10 +1,10 @@
 const STANDARD_RADIUS = 4.2, //use a getter/setter?
   COL_WIDTH = 5, //use a getter/setter?
   PADDING = 2.9, //use a getter/setter?
-  LABEL_PADDING = 3,
+  X_LABEL_PADDING = 0,
   HISTO_GROUP_PADDING = 6, //pegged to col_width?
   BY_PLATFORM_PADDING = 20, //pegged to col_width?
-  SVG_BOTTOM_PADDING = 20;
+  SVG_BOTTOM_PADDING = 25;
 
 exports.standardRadius = STANDARD_RADIUS;
 // exports.columnWidth = COL_WIDTH;
@@ -39,10 +39,10 @@ exports.histogramFixedWidthDiscreteValues = (
   const xAxisLabels = tags.map((t, i) => ({
     text: t,
     x: labelX[i],
-    y: height - 5 //make 5 a var?
+    y: height - X_LABEL_PADDING
   }));
 
-  const valueY = _getValueLabelPositions(tags, rcs, height, 40); //make 40 a var
+  const valueY = _getValueLabelPositions(tags, rcs, height, 50); //make 40 a const?
 
   const formattedLabels = tags.map(t => labelFormatter(t));
 
@@ -87,13 +87,13 @@ exports.histogramFixedWidthRangeValues = (
     .map((t, i) => ({
       text: t,
       x: labelX[i],
-      y: height - 5 //make this var?
+      y: height - X_LABEL_PADDING
     }));
   const valueY = _getValueLabelPositions(
     groupingData,
     rcs,
     height,
-    40 //make this a variable?
+    50
   );
 
   const valueLabels = groupingData.map((t, i) => ({
@@ -129,10 +129,10 @@ exports.histogramDynamicWidthDiscreteValues = (
   const xAxisLabels = tags.map((t, i) => ({
     text: t,
     x: labelX[i],
-    y: height - 5
+    y: height - X_LABEL_PADDING
   }));
 
-  const valueY = _getValueLabelPositions(tags, rcs, height, 40);
+  const valueY = _getValueLabelPositions(tags, rcs, height, 50);
   const formattedLabels = tags.map(t => labelFormatter(t));
   const valueLabels = tags.map((t, i) => ({
     text: formattedLabels[i],
@@ -267,7 +267,7 @@ const _getValueLabelPositions = (
   tags,//doesnt really need actual tags- see numtags above
   rowCols,
   height,
-  gapSpace = 40 //IS HEIGHT EVEN NECESSARY??
+  gapSpace// = 0 //IS HEIGHT EVEN NECESSARY??
 ) =>
   tags.map((t, i) => {
     const maxH = rowCols

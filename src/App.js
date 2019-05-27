@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import MenuButtonsAnimated from "./components/MenuButtonsAnimated";
+import MenuButtons from "./components/MenuButtons";
 import SideBar from "./components/SideBar";
 
 import { select, selectAll } from "d3-selection";
@@ -54,9 +54,10 @@ export default class App extends Component {
       .append("text")
       .attr("class", "xaxis-labels")
       .text(d => d.text)
+      .attr("font-size", "14px")
       .attr("x", (d, i) => d.x)
       .attr("y", this.height + 10)
-      .attr("fill", "#a0a0a0")
+      .attr("fill", "#000")
       .transition()
       .attr("y", d => d.y)
       .attr("opacity", 1)
@@ -365,7 +366,7 @@ export default class App extends Component {
 
           <h5 className="disclaimer">*using totally random data...for now</h5>
         </div>
-        <MenuButtonsAnimated
+        <MenuButtons
           selectedButton={selectedHistoButton}
           onButtonClick={i => this.onHistoButtonClick(i)}
         >
@@ -373,7 +374,7 @@ export default class App extends Component {
           <div>Release Year</div>
           <div>Distribution</div>
           <div>Ticket Sales</div>
-        </MenuButtonsAnimated>
+        </MenuButtons>
         <div className="svg-and-sidebar">
           <div className="svg-container" ref={ref => (this.svgContainer = ref)}>
             <h3>{chartTitle}</h3>
@@ -402,6 +403,7 @@ export default class App extends Component {
             </li>
           </ul>
         </div>
+        <div className="footer"><p>dcatzva@gmail.com - 2019</p></div>
       </div>
     );
   }

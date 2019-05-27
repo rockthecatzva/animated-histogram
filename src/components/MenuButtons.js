@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function MenuButtonsAnimated(props) {
+export default function MenuButtons(props) {
   const { onButtonClick, selectedButton } = props;
 
   return (
@@ -21,7 +21,7 @@ export default function MenuButtonsAnimated(props) {
   );
 }
 
-MenuButtonsAnimated.propTypes = {
+MenuButtons.propTypes = {
   onButtonClick: PropTypes.func.isRequired,
   selectedButton: PropTypes.number
 };

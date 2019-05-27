@@ -1,8 +1,8 @@
-$color-bg: #dedede;
-$color-1: #5e5c6c;
-$color-2: #0b5563;
-$color-3: #5299d3;
-$color-4: #beb8eb;
+$color-bg: #ececec;
+$color-1: #7FB7BE;
+$color-2: #DACC3E;
+$color-3: #BC2C1A;
+$color-4: #7D1538;
 $color-font: #000;
 $color-selected-button: #fff;
 
@@ -107,22 +107,16 @@ body {
     height: 100%;
     position: relative;
 
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-
     .movie-name {
       font-size: 2em;
     }
     .side-instructs {
-      //   position: absolute;
-      //   top: 50%;
-      //   transform: translate(0, -50%);
-
+      margin-top: 3em;
+      
       .arrow-and-text {
         width: 80%;
         font-size: 1em;
-        background-color: #c54d4d;
+        border: dashed 2px;
         padding-left: 8px;
         border-radius: 6px;
 
@@ -130,9 +124,9 @@ body {
           opacity: 0;
           transition: opacity 0.4s;
         }
-
+  
         &.--fadein {
-          opacity: 1;
+          opacity: 0.8;
           transition: opacity 1s;
         }
 
@@ -145,6 +139,18 @@ body {
           border-bottom: 10px solid transparent;
           border-right: 10px solid $color-font;
         }
+      }
+    }
+
+    .side-data{
+      &.--fadeout {
+        opacity: 0;
+        transition: opacity 1s;
+      }
+
+      &.--fadein {
+        opacity: 0.8;
+        transition: opacity 0.5s;
       }
     }
   }
@@ -186,4 +192,11 @@ body {
       }
     }
   }
+}
+
+
+.footer{
+  margin-top: 5em;
+  text-align: right;
+  font-weight: 300;
 }
