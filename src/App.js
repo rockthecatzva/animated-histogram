@@ -143,54 +143,33 @@ export default class App extends Component {
   };
 
   histoByYear = (data, buttonId) => {
-    const tags = histoUtils.tagGetter(data.map(d => d.year));
-    const rcs = histoUtils.rowColGetter_fixedColumnWidth(
-      tags,
-      "year",
+    const labelFormatter = (
+      tag // THIS SHOULD PROBABLY ONLY DO the division and "$M" parts the sum by tag should be handled in  util
+    ) =>
+      "$" +
+      (
+        data
+          .filter(d => d.year === tag)
+          .reduce((acc, curr) => acc + curr["ticket_sales"], 0) / 1000000
+      ).toFixed(1) +
+      "M";
+
+    const {
+      bubblePositions,
+      xAxisLabels,
+      valueLabels
+    } = histoUtils.histogramFixedWidthDiscreteValues(
       data,
-      histoUtils.indexGetterDiscrete(tags)
+      "year",
+      this.height,
+      this.width,
+      labelFormatter
     );
-
-    //3. figure out how much spacing we need to center the graph
-    const centerX = histoUtils.centerX(rcs, this.width);
-    //use the row/col to calc an x and y position
-    const xys = histoUtils.xYGetter(rcs, centerX, this.height);
-    const salesByTag = tags.map(
-      tag =>
-        "$" +
-        (
-          data
-            .filter(d => d.year === tag)
-            .reduce((acc, curr) => acc + curr["ticket_sales"], 0) / 1000000
-        ).toFixed(1) +
-        "M"
-    );
-
-    const labelX = histoUtils.labelXPositions(
-      salesByTag,
-      rcs,
-      centerX,
-      histoUtils.columnWidth - 1
-    );
-
-    const xAxisLabels = tags.map((t, i) => ({
-      text: t,
-      x: labelX[i],
-      y: this.height - 5
-    }));
-
-    const valueY = histoUtils.valueLabelYPositions(tags, rcs, this.height, 40);
-
-    const valueLabels = tags.map((t, i) => ({
-      text: salesByTag[i],
-      x: labelX[i],
-      y: valueY[i]
-    }));
 
     this.setState(
       { selectedHistoButton: buttonId, chartTitle: "Revenue by Year" },
       () => {
-        this.drawHistogram(xys);
+        this.drawHistogram(bubblePositions);
         this.drawAxisLabels(xAxisLabels);
         this.drawValueLabels(valueLabels);
       }
@@ -208,55 +187,33 @@ export default class App extends Component {
       { label: "2.5M-30M", min: 2500000, max: 30000000 }
     ];
 
-    const rcs = histoUtils.rowColGetter_fixedColumnWidth(
-      salesGroupings,
-      "ticket_sales",
-      data,
-      histoUtils.indexGetterRanges(salesGroupings)
-    );
-    const centerX = histoUtils.centerX(rcs, this.width);
-    const xys = histoUtils.xYGetter(rcs, centerX, this.height);
-
-    const indexGetter = histoUtils.indexGetterRanges(salesGroupings);
-
-    const salesByTag = salesGroupings.map(
-      (t, i) =>
+    const formattedLabels = salesGroupings.map(t => {
+      return (
         "$" +
         (
           data
-            .filter(b => indexGetter(b["ticket_sales"]) === i)
+            .filter(
+              d => d["ticket_sales"] >= t.min && d["ticket_sales"] < t.max
+            )
             .reduce((acc, curr) => acc + curr["ticket_sales"], 0) / 1000000
         ).toFixed(1) +
         "M"
-    );
+      );
+    });
+    // const labelFormatter = v => "$" + (v / 1000000).toFixed(1) + "M";
 
-    const labelX = histoUtils.labelXPositions(
-      salesByTag,
-      rcs,
-      centerX,
-      histoUtils.columnWidth - 1
-    );
-
-    const xAxisLabels = salesGroupings
-      .map(a => a.label)
-      .map((t, i) => ({
-        text: t,
-        x: labelX[i],
-        y: this.height - 5
-      }));
-
-    const valueY = histoUtils.valueLabelYPositions(
-      salesGroupings,
-      rcs,
+    const {
+      bubblePositions,
+      xAxisLabels,
+      valueLabels
+    } = histoUtils.histogramFixedWidthRangeValues(
+      data,
+      "ticket_sales",
       this.height,
-      40
+      this.width,
+      formattedLabels,
+      salesGroupings
     );
-
-    const valueLabels = salesGroupings.map((t, i) => ({
-      text: salesByTag[i],
-      x: labelX[i],
-      y: valueY[i]
-    }));
 
     this.setState(
       {
@@ -264,7 +221,7 @@ export default class App extends Component {
         chartTitle: "Movies Grouped by Revenue"
       },
       () => {
-        this.drawHistogram(xys);
+        this.drawHistogram(bubblePositions);
         this.drawAxisLabels(xAxisLabels);
         this.drawValueLabels(valueLabels);
       }
@@ -272,43 +229,16 @@ export default class App extends Component {
   };
 
   histoByPlatform = (data, buttonId, histoAttribute) => {
-    const tags = histoUtils.tagGetter(data.map(d => d[histoAttribute]));
-    const rcs = histoUtils.rowColGetter_dynamicColumnWidth(
-      tags,
-      histoAttribute,
-      data,
-      histoUtils.indexGetterDiscrete(tags)
-    );
-    const centerX = histoUtils.centerX(rcs, this.width);
-    const xys = histoUtils.xYGetter(rcs, centerX, this.height);
-
-    const salesByTag = tags.map(
-      tag =>
-        "$" +
-        (
-          data
-            .filter(b => b[histoAttribute] === tag)
-            .reduce((acc, curr) => acc + parseInt(curr["ticket_sales"]), 0) /
-          1000000
-        ).toFixed(1) +
-        "M"
-    );
-
-    const labelX = histoUtils.labelXPositions(salesByTag, rcs, centerX);
-
-    const xAxisLabels = tags.map((t, i) => ({
-      text: t,
-      x: labelX[i],
-      y: this.height - 5
-    }));
-
-    const valueY = histoUtils.valueLabelYPositions(tags, rcs, this.height, 40);
-
-    const valueLabels = tags.map((t, i) => ({
-      text: salesByTag[i],
-      x: labelX[i],
-      y: valueY[i]
-    }));
+    const labelFormatter = (
+      tag // THIS SHOULD PROBABLY ONLY DO the division and "$M" parts the sum by tag should be handled in  util
+    ) =>
+      "$" +
+      (
+        data
+          .filter(d => d[histoAttribute] === tag)
+          .reduce((acc, curr) => acc + curr["ticket_sales"], 0) / 1000000
+      ).toFixed(1) +
+      "M";
 
     let chartTitle;
     switch (histoAttribute) {
@@ -320,8 +250,20 @@ export default class App extends Component {
         break;
     }
 
+    const {
+      bubblePositions,
+      xAxisLabels,
+      valueLabels
+    } = histoUtils.histogramDynamicWidthDiscreteValues(
+      data,
+      histoAttribute,
+      this.height,
+      this.width,
+      labelFormatter
+    );
+
     this.setState({ selectedHistoButton: buttonId, chartTitle }, () => {
-      this.drawHistogram(xys);
+      this.drawHistogram(bubblePositions);
       this.drawAxisLabels(xAxisLabels);
       this.drawValueLabels(valueLabels);
     });
@@ -357,14 +299,14 @@ export default class App extends Component {
 
     const anims = [
       { delay: 0, dur: 0, animator: () => this.histoByYear(data, 1) },
-      { delay: 2500, dur: 0, animator: () => this.histoByTicketSales(data, 3) },
+      { delay: 3500, dur: 0, animator: () => this.histoByTicketSales(data, 3) },
       {
-        delay: 2500,
+        delay: 3500,
         dur: 0,
         animator: () => this.histoByPlatform(data, 0, "type")
       },
       {
-        delay: 2500,
+        delay: 3500,
         dur: 0,
         animator: () => this.histoByPlatform(data, 2, "group")
       }
