@@ -1,29 +1,161 @@
-//HanoverHistogramBubbles
-
 const STANDARD_RADIUS = 4.2, //use a getter/setter?
   COL_WIDTH = 5, //use a getter/setter?
   PADDING = 2.9, //use a getter/setter?
-  LABEL_PADDING = 3,
+  X_LABEL_PADDING = 0,
   HISTO_GROUP_PADDING = 6, //pegged to col_width?
   BY_PLATFORM_PADDING = 20, //pegged to col_width?
-  SVG_BOTTOM_PADDING = 20;
+  SVG_BOTTOM_PADDING = 25;
 
 exports.standardRadius = STANDARD_RADIUS;
-exports.columnWidth = COL_WIDTH;
+// exports.columnWidth = COL_WIDTH;
 
-exports.tagGetter = data =>
+exports.histogramFixedWidthDiscreteValues = (
+  data,
+  propName,
+  height,
+  width,
+  labelFormatter
+) => {
+  //get a unique list of tags used in data
+  const tags = _getUniqueLabels(data.map(d => d.year));
+  const rcs = _getRowColsFixedColumnWidth(
+    tags,
+    propName, //"year",
+    data,
+    _getGroupIndexDiscreteValues(tags)
+  );
+  //3. figure out how much spacing we need to center the graph
+  const centerX = _getCenterX(rcs, width);
+  //use the row/col to calc an x and y position
+  const bubblePositions = _getTargetXYs(rcs, centerX, height);
+  const labelX = _getXLabelPositions(
+    ///THIS IS UN TESTED!!
+    tags.length,
+    rcs,
+    centerX,
+    COL_WIDTH - 1 //might want this to be passed in now
+  );
+
+  const xAxisLabels = tags.map((t, i) => ({
+    text: t,
+    x: labelX[i],
+    y: height - X_LABEL_PADDING
+  }));
+
+  const valueY = _getValueLabelPositions(tags, rcs, height, 50); //make 40 a const?
+
+  const formattedLabels = tags.map(t => labelFormatter(t));
+
+  const valueLabels = tags.map((t, i) => ({
+    text: formattedLabels[i], //these could be optional?
+    x: labelX[i],
+    y: valueY[i]
+  }));
+
+  return {
+    bubblePositions,
+    xAxisLabels,
+    valueLabels
+  };
+};
+
+exports.histogramFixedWidthRangeValues = (
+  data,
+  propName,
+  height,
+  width,
+  formattedLabels,
+  groupingData
+) => {
+  const rcs = _getRowColsFixedColumnWidth(
+    groupingData,
+    propName,
+    data,
+    _getGroupIndexRangeValues(groupingData)
+  );
+  const centerX = _getCenterX(rcs, width);
+  const bubblePositions = _getTargetXYs(rcs, centerX, height);
+  // const indexGetter = exports.indexGetterRanges(groupingData);
+  const labelX = _getXLabelPositions(
+    groupingData.length,
+    rcs,
+    centerX,
+    COL_WIDTH - 1
+  );
+  const xAxisLabels = groupingData
+    .map(a => a.label)
+    .map((t, i) => ({
+      text: t,
+      x: labelX[i],
+      y: height - X_LABEL_PADDING
+    }));
+  const valueY = _getValueLabelPositions(
+    groupingData,
+    rcs,
+    height,
+    50
+  );
+
+  const valueLabels = groupingData.map((t, i) => ({
+    text: formattedLabels[i],
+    x: labelX[i],
+    y: valueY[i]
+  }));
+
+  return {
+    bubblePositions,
+    xAxisLabels,
+    valueLabels
+  };
+};
+
+exports.histogramDynamicWidthDiscreteValues = (
+  data,
+  propName,
+  height,
+  width,
+  labelFormatter
+) => {
+  const tags = _getUniqueLabels(data.map(d => d[propName]));
+  const rcs = _getRowColsDynamicColumnWidth(
+    tags,
+    propName,
+    data,
+    _getGroupIndexDiscreteValues(tags)
+  );
+  const centerX = _getCenterX(rcs, width);
+  const bubblePositions = _getTargetXYs(rcs, centerX, height);
+  const labelX = _getXLabelPositions(tags.length, rcs, centerX);
+  const xAxisLabels = tags.map((t, i) => ({
+    text: t,
+    x: labelX[i],
+    y: height - X_LABEL_PADDING
+  }));
+
+  const valueY = _getValueLabelPositions(tags, rcs, height, 50);
+  const formattedLabels = tags.map(t => labelFormatter(t));
+  const valueLabels = tags.map((t, i) => ({
+    text: formattedLabels[i],
+    x: labelX[i],
+    y: valueY[i]
+  }));
+
+  return {
+    bubblePositions,
+    xAxisLabels,
+    valueLabels
+  };
+};
+
+//MIGHT BE ONE OF THE FEW FUNCS THAT NEEDS TO BE PUBLIC???
+const _getUniqueLabels = data =>
   data
     .reduce((acc, curr) => {
       return acc.indexOf(curr) < 0 ? [...acc, curr] : acc;
     }, [])
     .sort((a, b) => a - b);
 
-exports.countGetter = (tags, extractor, bubs) =>
-  tags.map(t => {
-    return bubs.filter(b => extractor(b) === t).length;
-  });
-
-exports.centerX = (rowsColsData, width) => {
+const _getCenterX = (rowsColsData, width) => {
   const maxIndex = rowsColsData.reduce(
     (acc, curr) => (curr.index > acc ? curr.index : acc),
     0
@@ -38,17 +170,12 @@ exports.centerX = (rowsColsData, width) => {
   return (width - (offset + numCols * STANDARD_RADIUS * PADDING)) / 2;
 };
 
-exports.indexGetterDiscrete = tags => val => tags.indexOf(val);
-exports.indexGetterRanges = ranges => val => {
+const _getGroupIndexDiscreteValues = tags => val => tags.indexOf(val);
+const _getGroupIndexRangeValues = ranges => val => {
   return ranges.indexOf(ranges.find(g => val >= g.min && val < g.max));
 };
 
-exports.rowColGetter_fixedColumnWidth = (
-  tags,
-  attribute,
-  data,
-  indexGetter
-) => {
+const _getRowColsFixedColumnWidth = (tags, attribute, data, indexGetter) => {
   let countsByAttribute = tags.map(t => 0);
 
   return data.map(b => {
@@ -64,11 +191,11 @@ exports.rowColGetter_fixedColumnWidth = (
       countsByAttribute[index] += 1;
     }
 
-    return { row, col, groupOffset, index, attributeValue };
+    return { ...b, row, col, groupOffset, index, attributeValue };
   });
 };
 
-exports.rowColGetter_dynamicColumnWidth = (
+const _getRowColsDynamicColumnWidth = (
   tags,
   attribute,
   bubs,
@@ -100,85 +227,30 @@ exports.rowColGetter_dynamicColumnWidth = (
       countsByAttribute[index] += 1;
     }
 
-    return { row, col, groupOffset, index, attributeValue };
+    return { ...b, row, col, groupOffset, index, attributeValue };
   });
 };
 
-exports.xYGetter = (bubs, centeringX, height) =>
+const _getTargetXYs = (bubs, centeringX, height) =>
   bubs.map(b => {
-    const cx = b.col * (STANDARD_RADIUS * PADDING) + b.groupOffset + centeringX,
-      cy =
+    const targetX =
+        b.col * (STANDARD_RADIUS * PADDING) + b.groupOffset + centeringX,
+      targetY =
         height -
         b.row * (STANDARD_RADIUS * PADDING) -
         STANDARD_RADIUS -
         SVG_BOTTOM_PADDING;
 
-    return { ...b, cx, cy };
+    return { ...b, targetX, targetY };
   });
 
-exports.labelMaker = (
-  tags,
-  rowCols,
-  centeringX,
-  height,
-  fixedColWidth = undefined
-) =>
-  tags.map((t, i) => {
-    const groupOffset = rowCols.find(rc => rc.index === i).groupOffset,
-      numCols = fixedColWidth
-        ? fixedColWidth
-        : rowCols
-            .filter(b => b.index === i)
-            .map(b => b.col)
-            .reduce((acc, curr) => (curr > acc ? curr : acc)),
-      histoColCenter = (numCols / 2) * STANDARD_RADIUS * PADDING;
-
-    return {
-      text: t,
-      y: height - LABEL_PADDING,
-      x: groupOffset + centeringX + histoColCenter
-    };
-  });
-
-exports.labelMakerValues = (
-  tags,
-  rowCols,
-  centeringX,
-  height,
-  fixedColWidth = undefined
-) =>
-  tags.map((t, i) => {
-    const groupOffset = rowCols.find(rc => rc.index === i).groupOffset,
-      numCols = fixedColWidth
-        ? fixedColWidth
-        : rowCols
-            .filter(b => b.index === i)
-            .map(b => b.col)
-            .reduce((acc, curr) => (curr > acc ? curr : acc)),
-      histoColCenter = (numCols / 2) * STANDARD_RADIUS * PADDING,
-      maxH = rowCols
-        .filter(r => r.index === i)
-        .reduce((acc, curr) => {
-          if (curr.row > acc) {
-            return curr.row;
-          }
-          return acc;
-        }, 0);
-
-    return {
-      text: t,
-      y: height - maxH * STANDARD_RADIUS * PADDING - 40,
-      x: groupOffset + centeringX + histoColCenter
-    };
-  });
-
-exports.labelXPositions = (
-  tags,
+const _getXLabelPositions = (
+  numTags,
   rowCols,
   centeringX,
   fixedColWidth = undefined
 ) =>
-  tags.map((t, i) => {
+  [...Array(numTags)].map((t, i) => {
     const groupOffset = rowCols.find(rc => rc.index === i).groupOffset,
       numCols = fixedColWidth
         ? fixedColWidth
@@ -191,11 +263,11 @@ exports.labelXPositions = (
     return groupOffset + centeringX + histoColCenter;
   });
 
-exports.valueLabelYPositions = (
-  tags,
+const _getValueLabelPositions = (
+  tags,//doesnt really need actual tags- see numtags above
   rowCols,
   height,
-  gapSpace = 40 //IS HEIGHT EVEN NECESSARY??
+  gapSpace// = 0 //IS HEIGHT EVEN NECESSARY??
 ) =>
   tags.map((t, i) => {
     const maxH = rowCols
