@@ -155,11 +155,6 @@ const _getUniqueLabels = data =>
     }, [])
     .sort((a, b) => a - b);
 
-// exports.countGetter = (tags, extractor, bubs) =>
-//   tags.map(t => {
-//     return bubs.filter(b => extractor(b) === t).length;
-//   });
-
 const _getCenterX = (rowsColsData, width) => {
   const maxIndex = rowsColsData.reduce(
     (acc, curr) => (curr.index > acc ? curr.index : acc),
