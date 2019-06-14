@@ -4,7 +4,7 @@ var fs = require("fs");
 
 const years = [2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012];
 
-//
+const removeCommasMakeInt = str => parseInt(str.replace(/([$,])+/gm, ""), 10);
 
 const axProms = years.map(yr =>
   axios.get(
@@ -31,14 +31,18 @@ Promise.all(axProms)
           .eq(2)
           .text();
 
-        const gross = $(elem)
-          .find("td font b")
-          .text();
+        const gross = removeCommasMakeInt(
+          $(elem)
+            .find("td font b")
+            .text()
+        );
 
-        const numTheaters = $(elem)
-          .find("td font")
-          .eq(4)
-          .text();
+        const numTheaters = removeCommasMakeInt(
+          $(elem)
+            .find("td font")
+            .eq(4)
+            .text()
+        );
 
         const openDate =
           $(elem)
@@ -53,24 +57,24 @@ Promise.all(axProms)
 
     // const t = moviesByYear.reduce((acc,curr)=>[...acc, ...curr]);
     // console.log(t.length);
-    const removeCommasMakeInt = str =>
-      parseInt(str.replace(/([$,])+/gm, ""), 10);
 
-    var file = fs.createWriteStream("src/data/scripts/scraped-movie-data.csv");
-    file.on("error", function(err) {
-      /* error handling */
-      console.log("Error, yo");
-    });
-    moviesByYear
-      .reduce((acc, curr) => [...acc, ...curr])
-      .forEach(function(v) {
-        file.write(
-          `"${v.name}",${v.href},"${v.studio}",${removeCommasMakeInt(
-            v.gross
-          )},${removeCommasMakeInt(v.numTheaters)},${v.openDate}\n`
-        );
-      });
-    file.end();
+    // var file = fs.createWriteStream("src/data/scripts/scraped-movie-data.csv");
+    // file.on("error", function(err) {
+    //   /* error handling */
+    //   console.log("Error, yo");
+    // });
+    // moviesByYear
+    //   .reduce((acc, curr) => [...acc, ...curr])
+    //   .forEach(function(v) {
+    //     file.write(
+    //       `"${v.name}",${v.href},"${v.studio}",${removeCommasMakeInt(
+    //         v.gross
+    //       )},${removeCommasMakeInt(v.numTheaters)},${v.openDate}\n`
+    //     );
+    //   });
+    // file.end();
+    const stackedData = moviesByYear.reduce((acc, curr) => [...acc, ...curr]);
+    fs.writeFileSync("src/data/scripts/scraped-movie-data.json", JSON.stringify(stackedData));
   })
   .catch(error => {
     console.log("there was an error");
