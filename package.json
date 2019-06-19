@@ -12,7 +12,8 @@
     "word-gen": "node src/data/scripts/rando-name-gen.js",
     "scrape-urls": "node src/data/scripts/scrape_urls.js",
     "scrape-details": "node src/data/scripts/scrape_details.js",
-    "parse-movie-json": "node src/data/scripts/parse-movie-json.js"
+    "parse-movie-json": "node src/data/scripts/parse-movie-json.js",
+    "analyze-data": "node --inspect-brk src/data/scripts/analyze-data.js"
   },
   "repository": {
     "type": "git",

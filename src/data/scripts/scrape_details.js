@@ -2,6 +2,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
 
+//couldve just required the json infile
 const infile = "src/data/scripts/scraped-movie-data.json"; //"src/data/scripts/temp.json";
 const outfile = "src/data/scripts/appended-dat.json";
 const jsonData = fs.readFileSync(infile);
