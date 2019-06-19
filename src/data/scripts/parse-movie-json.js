@@ -39,8 +39,8 @@ const genreMapping = {
   Musical: "Other",
   "Period Action": "Action/Adventure",
   "Period Adventure": "Action/Adventure",
-  Romance: "Romance",
-  "Romantic Comedy": "Romance",
+  Romance: "Other",
+  "Romantic Comedy": "Other",
   "Romantic Thriller": "Action/Adventure",
   "Sci-Fi": "Sci-Fi/Fantasy",
   "Sci-Fi Action": "Sci-Fi/Fantasy",
@@ -171,7 +171,7 @@ const scrapedData = require("./appended-dat.json")
   })
   .filter(d => d !== undefined)
   .sort((a, b) => (a.gross < b.gross ? 1 : -1))
-  .slice(0, 500);//lets only do top 400 now???
+  .slice(0, 400);//lets only do top 400 now???
 
 console.log(scrapedData);
 

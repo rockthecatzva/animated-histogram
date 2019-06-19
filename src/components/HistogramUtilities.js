@@ -76,6 +76,7 @@ exports.histogramFixedWidthRangeValues = (
   const centerX = _getCenterX(rcs, width);
   const bubblePositions = _getTargetXYs(rcs, centerX, height);
   // const indexGetter = exports.indexGetterRanges(groupingData);
+  
   const labelX = _getXLabelPositions(
     groupingData.length,
     rcs,
@@ -251,6 +252,7 @@ const _getXLabelPositions = (
   fixedColWidth = undefined
 ) =>
   [...Array(numTags)].map((t, i) => {
+    console.log(i)
     const groupOffset = rowCols.find(rc => rc.index === i).groupOffset,
       numCols = fixedColWidth
         ? fixedColWidth

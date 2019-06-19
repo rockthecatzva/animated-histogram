@@ -63,22 +63,24 @@ body {
     transition: border-bottom 2s;
   }
 }
-.Romantic {
+.animationfamily {
   fill: $color-1;
   background-color: $color-1;
 }
-.Comedy {
+.comedy {
   fill: $color-2;
   background-color: $color-2;
 }
-.Horror {
+.horror {
   fill: $color-3;
   background-color: $color-3;
 }
-.Action {
+.actionadventure {
   fill: $color-4;
   background-color: $color-4;
 }
+
+
 .svg-and-sidebar {
   clear: both;
   height: 400px;

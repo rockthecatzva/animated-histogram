@@ -63,7 +63,7 @@ grosss = data.map(d => d.gross);
 const getAverage = set => set.reduce((acc, curr) => acc + curr, 0) / set.length;
 
 const avg = getAverage(grosss); // grosss.reduce((acc, curr) => acc + curr, 0) / grosss.length;
-console.log(avg);
+// console.log(avg);
 
 // console.log(centroids);
 const numGroups = 7;
@@ -86,7 +86,7 @@ let centroidSet = centroids.map((c, i) => {
   return { values, average };
 });
 
-console.log("initial set: ", centroidSet)
+// console.log("initial set: ", centroidSet);
 
 const clusterAdjustments = 5;
 
@@ -143,9 +143,9 @@ for (let i = 0; i < clusterAdjustments; i++) {
         values: newSet,
         average: getAverage(newSet)
       });
-    //   console.log("Changing");
-    } 
-    
+      //   console.log("Changing");
+    }
+
     // console.log(
     //   "------- check in:",
     //   i,
@@ -155,5 +155,6 @@ for (let i = 0; i < clusterAdjustments; i++) {
   });
 }
 
-console.log(centroidSet);
-debugger;
+centroidSet.forEach(c => {
+  console.log(Math.max(...c.values), Math.min(...c.values));
+});
