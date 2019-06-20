@@ -379,8 +379,6 @@ export default class App extends Component {
             <img className="header-img" src={img_film} />
             <h1 className="header-text">TOP 400 MOVIES OVER PAST 8 YEARS</h1>
           </div>
-
-          <h5 className="disclaimer">*by gross ticket sales to-date</h5>
           <h5 className="disclaimer">*using data scraped from <a href="https://www.boxofficemojo.com/">boxofficemojo.com</a> ...see botttom for more details</h5>
         </div>
         <MenuButtons
