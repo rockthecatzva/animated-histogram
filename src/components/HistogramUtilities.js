@@ -173,7 +173,7 @@ const _getCenterX = (rowsColsData, width) => {
 
 const _getGroupIndexDiscreteValues = tags => val => tags.indexOf(val);
 const _getGroupIndexRangeValues = ranges => val => {
-  return ranges.indexOf(ranges.find(g => val >= g.min && val < g.max));
+  return ranges.indexOf(ranges.find(g => val >= g.min && val <= g.max));//b/c both have equal sign it assumes non-overlapping groups!
 };
 
 const _getRowColsFixedColumnWidth = (tags, attribute, data, indexGetter) => {
@@ -252,7 +252,6 @@ const _getXLabelPositions = (
   fixedColWidth = undefined
 ) =>
   [...Array(numTags)].map((t, i) => {
-    console.log(i)
     const groupOffset = rowCols.find(rc => rc.index === i).groupOffset,
       numCols = fixedColWidth
         ? fixedColWidth

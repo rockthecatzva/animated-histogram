@@ -88,7 +88,7 @@ let centroidSet = centroids.map((c, i) => {
 
 // console.log("initial set: ", centroidSet);
 
-const clusterAdjustments = 5;
+const clusterAdjustments = 25;
 
 for (let i = 0; i < clusterAdjustments; i++) {
   //go thru each point

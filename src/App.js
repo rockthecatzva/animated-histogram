@@ -13,6 +13,23 @@ const histoUtils = require("./components/HistogramUtilities");
 const dataFile = require("../src/data/scraped-movie-data.json");
 import "./style.scss";
 
+const formatThousandsMilsBills = val => {
+  if (val >= 1000000000) {
+    ///billions
+    return (val / 1000000000).toFixed(2) + "B";
+  }
+  if (val >= 1000000) {
+    //millions
+    return Math.round(val / 1000000) + "M";
+  }
+  if (val >= 1000) {
+    //thoudands
+    return Math.round(val / 1000) + "K";
+  }
+
+  return Math.round(val);
+};
+
 export default class App extends Component {
   drawHistogram = data => {
     this.g
@@ -54,7 +71,7 @@ export default class App extends Component {
       .append("text")
       .attr("class", "xaxis-labels")
       .text(d => d.text)
-      .attr("font-size", "14px")
+      .attr("font-size", "12px")
       .attr("x", (d, i) => d.x)
       .attr("y", this.height + 10)
       .attr("fill", "#000")
@@ -126,10 +143,13 @@ export default class App extends Component {
       .data(data)
       .enter()
       .append("circle")
-      .attr("class", d => "bubble " + d["genre"].replace(/\//gm, "").toLowerCase() )
+      .attr(
+        "class",
+        d => "bubble " + d["genre"].replace(/\//gm, "").toLowerCase()
+      )
       .attr("cx", this.width / 2)
       .attr("cy", -100)
-      .attr("fill", "#71C8AF")
+      .attr("fill", "#ffffff")
       .attr("r", histoUtils.standardRadius)
       .on("mouseenter", function(d) {
         select(this).attr("r", histoUtils.standardRadius + 3);
@@ -148,12 +168,11 @@ export default class App extends Component {
       tag // THIS SHOULD PROBABLY ONLY DO the division and "$M" parts the sum by tag should be handled in  util
     ) =>
       "$" +
-      (
+      formatThousandsMilsBills(
         data
           .filter(d => d.year === tag)
-          .reduce((acc, curr) => acc + curr["gross"], 0) / 1000000
-      ).toFixed(1) +
-      "M";
+          .reduce((acc, curr) => acc + curr["gross"], 0)
+      );
 
     const {
       bubblePositions,
@@ -179,27 +198,26 @@ export default class App extends Component {
 
   histoByTicketSales = (data, buttonId) => {
     const salesGroupings = [
-      { label: "50-63M", min: 0, max: 63285885 },
-      { label: "63-82M", min: 63285885, max: 82051601 },
-      { label: "82-110M", min: 82051601, max: 110212700 },
-      { label: "110-155M", min: 110212700, max: 155190832 },
-      { label: "155M-238M", min: 155190832, max: 238679850 },
-      { label: "238M-408M", min: 238679850, max: 408084349 },
-      { label: "408M-938M", min: 408084349, max: 937662225 }
+      { label: "51-77M", min: 51342000, max: 77339130 },
+      { label: "78-110M", min: 78031620, max: 110212700 },
+      { label: "111-149M", min: 111035005, max: 148809770 },
+      { label: "150-203M", min: 150117807, max: 202853933 },
+      { label: "208-303M", min: 208545589, max: 303003568 },
+      { label: "315-532M", min: 315058289, max: 532177324 },
+      { label: "608-937M", min: 608581744, max: 936662225 }
     ];
 
     const formattedLabels = salesGroupings.map(t => {
       return (
         "$" +
-        (
+        formatThousandsMilsBills(
           data
-            .filter(d => d["gross"] >= t.min && d["gross"] < t.max)
-            .reduce((acc, curr) => acc + curr["gross"], 0) / 1000000
-        ).toFixed(1) +
-        "M"
+            .filter(d => d["gross"] >= t.min && d["gross"] <= t.max)
+            .reduce((acc, curr) => acc + curr["gross"], 0)
+        )
       );
     });
-    
+
     // const labelFormatter = v => "$" + (v / 1000000).toFixed(1) + "M";
 
     const {
@@ -233,12 +251,11 @@ export default class App extends Component {
       tag // THIS SHOULD PROBABLY ONLY DO the division and "$M" parts the sum by tag should be handled in  util
     ) =>
       "$" +
-      (
+      formatThousandsMilsBills(
         data
           .filter(d => d[histoAttribute] === tag)
-          .reduce((acc, curr) => acc + curr["gross"], 0) / 1000000
-      ).toFixed(1) +
-      "M";
+          .reduce((acc, curr) => acc + curr["gross"], 0)
+      );
 
     let chartTitle;
     switch (histoAttribute) {
@@ -360,10 +377,11 @@ export default class App extends Component {
         <div className="header-container">
           <div>
             <img className="header-img" src={img_film} />
-            <h1 className="header-text">MOVIE BOX OFFICE PERFORMANCE</h1>
+            <h1 className="header-text">TOP 400 MOVIES OVER PAST 8 YEARS</h1>
           </div>
 
-          <h5 className="disclaimer">*using totally random data...for now</h5>
+          <h5 className="disclaimer">*by gross ticket sales to-date</h5>
+          <h5 className="disclaimer">*using data scraped from <a href="https://www.boxofficemojo.com/">boxofficemojo.com</a> ...see botttom for more details</h5>
         </div>
         <MenuButtons
           selectedButton={selectedHistoButton}
