@@ -10,8 +10,25 @@ import img_film from "./images/film.png";
 
 const histoUtils = require("./components/HistogramUtilities");
 
-const dataFile = require("../src/data.json");
+const dataFile = require("../src/data/scraped-movie-data.json");
 import "./style.scss";
+
+const formatThousandsMilsBills = val => {
+  if (val >= 1000000000) {
+    ///billions
+    return (val / 1000000000).toFixed(2) + "B";
+  }
+  if (val >= 1000000) {
+    //millions
+    return Math.round(val / 1000000) + "M";
+  }
+  if (val >= 1000) {
+    //thoudands
+    return Math.round(val / 1000) + "K";
+  }
+
+  return Math.round(val);
+};
 
 export default class App extends Component {
   drawHistogram = data => {
@@ -54,7 +71,7 @@ export default class App extends Component {
       .append("text")
       .attr("class", "xaxis-labels")
       .text(d => d.text)
-      .attr("font-size", "14px")
+      .attr("font-size", "12px")
       .attr("x", (d, i) => d.x)
       .attr("y", this.height + 10)
       .attr("fill", "#000")
@@ -126,10 +143,13 @@ export default class App extends Component {
       .data(data)
       .enter()
       .append("circle")
-      .attr("class", d => "bubble " + d["type"])
+      .attr(
+        "class",
+        d => "bubble " + d["genre"].replace(/\//gm, "").toLowerCase()
+      )
       .attr("cx", this.width / 2)
       .attr("cy", -100)
-      .attr("fill", "#71C8AF")
+      .attr("fill", "#ffffff")
       .attr("r", histoUtils.standardRadius)
       .on("mouseenter", function(d) {
         select(this).attr("r", histoUtils.standardRadius + 3);
@@ -148,12 +168,11 @@ export default class App extends Component {
       tag // THIS SHOULD PROBABLY ONLY DO the division and "$M" parts the sum by tag should be handled in  util
     ) =>
       "$" +
-      (
+      formatThousandsMilsBills(
         data
           .filter(d => d.year === tag)
-          .reduce((acc, curr) => acc + curr["ticket_sales"], 0) / 1000000
-      ).toFixed(1) +
-      "M";
+          .reduce((acc, curr) => acc + curr["gross"], 0)
+      );
 
     const {
       bubblePositions,
@@ -179,28 +198,26 @@ export default class App extends Component {
 
   histoByTicketSales = (data, buttonId) => {
     const salesGroupings = [
-      { label: "0-25k", min: 0, max: 25000 },
-      { label: "25-100k", min: 25000, max: 100000 },
-      { label: "100-250k", min: 100000, max: 250000 },
-      { label: "250-500k", min: 250000, max: 500000 },
-      { label: "500k-1M", min: 500000, max: 1000000 },
-      { label: "1M-2.5M", min: 1000000, max: 2500000 },
-      { label: "2.5M-30M", min: 2500000, max: 30000000 }
+      { label: "51-77M", min: 51342000, max: 77339130 },
+      { label: "78-110M", min: 78031620, max: 110212700 },
+      { label: "111-149M", min: 111035005, max: 148809770 },
+      { label: "150-203M", min: 150117807, max: 202853933 },
+      { label: "208-303M", min: 208545589, max: 303003568 },
+      { label: "315-532M", min: 315058289, max: 532177324 },
+      { label: "608-937M", min: 608581744, max: 936662225 }
     ];
 
     const formattedLabels = salesGroupings.map(t => {
       return (
         "$" +
-        (
+        formatThousandsMilsBills(
           data
-            .filter(
-              d => d["ticket_sales"] >= t.min && d["ticket_sales"] < t.max
-            )
-            .reduce((acc, curr) => acc + curr["ticket_sales"], 0) / 1000000
-        ).toFixed(1) +
-        "M"
+            .filter(d => d["gross"] >= t.min && d["gross"] <= t.max)
+            .reduce((acc, curr) => acc + curr["gross"], 0)
+        )
       );
     });
+
     // const labelFormatter = v => "$" + (v / 1000000).toFixed(1) + "M";
 
     const {
@@ -209,7 +226,7 @@ export default class App extends Component {
       valueLabels
     } = histoUtils.histogramFixedWidthRangeValues(
       data,
-      "ticket_sales",
+      "gross",
       this.height,
       this.width,
       formattedLabels,
@@ -234,20 +251,19 @@ export default class App extends Component {
       tag // THIS SHOULD PROBABLY ONLY DO the division and "$M" parts the sum by tag should be handled in  util
     ) =>
       "$" +
-      (
+      formatThousandsMilsBills(
         data
           .filter(d => d[histoAttribute] === tag)
-          .reduce((acc, curr) => acc + curr["ticket_sales"], 0) / 1000000
-      ).toFixed(1) +
-      "M";
+          .reduce((acc, curr) => acc + curr["gross"], 0)
+      );
 
     let chartTitle;
     switch (histoAttribute) {
-      case "type":
+      case "genre":
         chartTitle = "Movies by Genre";
         break;
-      case "group":
-        chartTitle = "Movies by Distribution";
+      case "mpaaRating":
+        chartTitle = "Movies by MPAA Rating";
         break;
     }
 
@@ -286,15 +302,15 @@ export default class App extends Component {
     this.data = dataFile
       .map(d => ({
         ...d,
-        date: new Date(d.date),
-        year: new Date(d.date).getFullYear(),
+        // date: new Date(d.date),
+        // year: new Date(d.date).getFullYear(),
         cx: 0, //init x and y positions
         cy: -this.height,
         targetX: 0,
         targetY: -this.height
       }))
-      .sort((a, b) => (a.dollar_value < b.dollar_value ? -1 : 1))
-      .sort((a, b) => (a.type < b.type ? -1 : 1));
+      .sort((a, b) => (a["gross"] < b["gross"] ? -1 : 1))
+      .sort((a, b) => (a["genre"] < b["genre"] ? -1 : 1));
 
     const { data } = this;
 
@@ -304,12 +320,12 @@ export default class App extends Component {
       {
         delay: 3500,
         dur: 0,
-        animator: () => this.histoByPlatform(data, 0, "type")
+        animator: () => this.histoByPlatform(data, 0, "genre")
       },
       {
         delay: 3500,
         dur: 0,
-        animator: () => this.histoByPlatform(data, 2, "group")
+        animator: () => this.histoByPlatform(data, 2, "mpaaRating")
       }
     ];
 
@@ -329,8 +345,8 @@ export default class App extends Component {
     if (i !== this.state.selectedHistoButton) {
       switch (i) {
         case 0:
-          //type
-          this.histoByPlatform(this.data, 0, "type");
+          //genre
+          this.histoByPlatform(this.data, 0, "genre");
           break;
         case 1:
           //year
@@ -338,7 +354,7 @@ export default class App extends Component {
           break;
         case 2:
           //dist
-          this.histoByPlatform(this.data, 2, "group");
+          this.histoByPlatform(this.data, 2, "mpaaRating");
           break;
         case 3:
           //ticket sales
@@ -361,10 +377,11 @@ export default class App extends Component {
         <div className="header-container">
           <div>
             <img className="header-img" src={img_film} />
-            <h1 className="header-text">MOVIE BOX OFFICE PERFORMANCE</h1>
+            <h1 className="header-text">TOP 400 MOVIES OVER PAST 8 YEARS</h1>
           </div>
 
-          <h5 className="disclaimer">*using totally random data...for now</h5>
+          <h5 className="disclaimer">*by gross ticket sales to-date</h5>
+          <h5 className="disclaimer">*using data scraped from <a href="https://www.boxofficemojo.com/">boxofficemojo.com</a> ...see botttom for more details</h5>
         </div>
         <MenuButtons
           selectedButton={selectedHistoButton}
@@ -372,7 +389,7 @@ export default class App extends Component {
         >
           <div>Genre</div>
           <div>Release Year</div>
-          <div>Distribution</div>
+          <div>MPAA Rating</div>
           <div>Ticket Sales</div>
         </MenuButtons>
         <div className="svg-and-sidebar">
@@ -386,24 +403,34 @@ export default class App extends Component {
           <h3>Legend</h3>
           <ul>
             <li>
-              <div className="Action" />
-              Action
+              <div className="actionadventure" />
+              Action/Adventure
             </li>
             <li>
-              <div className="Comedy" />
+              <div className="comedy" />
               Comedy
             </li>
             <li>
-              <div className="Horror" />
+              <div className="horror" />
               Horror
             </li>
             <li>
-              <div className="Romantic" />
-              Romantic
+              <div className="animationfamily" />
+              Animation/Family
+            </li>
+            <li>
+              <div className="sci-fifantasy" />
+              Sci-Fi/Fantasy
+            </li>
+            <li>
+              <div className="other" />
+              Other
             </li>
           </ul>
         </div>
-        <div className="footer"><p>dcatzva@gmail.com - 2019</p></div>
+        <div className="footer">
+          <p>dcatzva@gmail.com - 2019</p>
+        </div>
       </div>
     );
   }

@@ -9,7 +9,11 @@
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
     "make-json": "node src/data/scripts/csv-to-json.js",
-    "word-gen": "node src/data/scripts/rando-name-gen.js"
+    "word-gen": "node src/data/scripts/rando-name-gen.js",
+    "scrape-urls": "node src/data/scripts/scrape_urls.js",
+    "scrape-details": "node src/data/scripts/scrape_details.js",
+    "parse-movie-json": "node src/data/scripts/parse-movie-json.js",
+    "analyze-data": "node src/data/scripts/analyze-data.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +31,9 @@
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "axios": "^0.19.0",
     "babel-loader": "^8.0.6",
+    "cheerio": "^1.0.0-rc.3",
     "css-loader": "^2.1.1",
     "csv-parse": "^4.4.1",
     "csv-parser": "^2.3.0",

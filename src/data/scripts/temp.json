@@ -1,0 +1,42 @@
+[
+  {
+    "href": "/movies/?id=marvel2019.htm",
+    "name": "Avengers: Endgame",
+    "studio": "BV",
+    "gross": 820817940,
+    "numTheaters": 4662,
+    "openDate": "4/26/2019"
+  },
+  {
+    "href": "/movies/?id=marvel2018a.htm",
+    "name": "Captain Marvel ",
+    "studio": "BV",
+    "gross": 426273965,
+    "numTheaters": 4310,
+    "openDate": "3/8/2019"
+  },
+  {
+    "href": "/movies/?id=disneyfairytale22019.htm",
+    "name": "Aladdin (2019)",
+    "studio": "BV",
+    "gross": 214919926,
+    "numTheaters": 4476,
+    "openDate": "5/24/2019"
+  },
+  {
+    "href": "/movies/?id=untitledjordanpeele.htm",
+    "name": "Us",
+    "studio": "Uni.",
+    "gross": 175005930,
+    "numTheaters": 3743,
+    "openDate": "3/22/2019"
+  },
+  {
+    "href": "/movies/?id=httyd3.htm",
+    "name": "How to Train Your Dragon: The Hidden World",
+    "studio": "Uni.",
+    "gross": 160698705,
+    "numTheaters": 4286,
+    "openDate": "2/22/2019"
+  }
+]

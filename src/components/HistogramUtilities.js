@@ -76,6 +76,7 @@ exports.histogramFixedWidthRangeValues = (
   const centerX = _getCenterX(rcs, width);
   const bubblePositions = _getTargetXYs(rcs, centerX, height);
   // const indexGetter = exports.indexGetterRanges(groupingData);
+  
   const labelX = _getXLabelPositions(
     groupingData.length,
     rcs,
@@ -172,7 +173,7 @@ const _getCenterX = (rowsColsData, width) => {
 
 const _getGroupIndexDiscreteValues = tags => val => tags.indexOf(val);
 const _getGroupIndexRangeValues = ranges => val => {
-  return ranges.indexOf(ranges.find(g => val >= g.min && val < g.max));
+  return ranges.indexOf(ranges.find(g => val >= g.min && val <= g.max));//b/c both have equal sign it assumes non-overlapping groups!
 };
 
 const _getRowColsFixedColumnWidth = (tags, attribute, data, indexGetter) => {

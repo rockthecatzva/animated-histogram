@@ -3,6 +3,8 @@ $color-1: #7FB7BE;
 $color-2: #DACC3E;
 $color-3: #BC2C1A;
 $color-4: #7D1538;
+$color-5: #822E81;
+$color-6: #71C8AF;
 $color-font: #000;
 $color-selected-button: #fff;
 
@@ -63,22 +65,33 @@ body {
     transition: border-bottom 2s;
   }
 }
-.Romantic {
+.animationfamily {
   fill: $color-1;
   background-color: $color-1;
 }
-.Comedy {
+.comedy {
   fill: $color-2;
   background-color: $color-2;
 }
-.Horror {
+.horror {
   fill: $color-3;
   background-color: $color-3;
 }
-.Action {
+.actionadventure {
   fill: $color-4;
   background-color: $color-4;
 }
+
+.other {
+  fill: $color-5;
+  background-color: $color-5
+}
+
+.sci-fifantasy{
+  fill: $color-6;
+  background-color: $color-6;
+}
+
 .svg-and-sidebar {
   clear: both;
   height: 400px;
@@ -152,6 +165,14 @@ body {
         opacity: 0.8;
         transition: opacity 0.5s;
       }
+
+      td:nth-child(1){
+        font-size: 11px;
+        opacity: 0.8;
+      }
+      td:nth-child(2){
+        text-align: right;
+      }
     }
   }
 }
@@ -186,6 +207,9 @@ body {
     justify-content: space-evenly;
 
     li {
+      font-size: 13px;
+      line-height: 20px;
+
       div {
         float: left;
         margin-right: 6px;
